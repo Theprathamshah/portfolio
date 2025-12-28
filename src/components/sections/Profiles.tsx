@@ -279,6 +279,27 @@ export const Profiles = () => {
           {leetcodeProfile && <LeetCodeCard profile={leetcodeProfile} />}
           {chessProfile && <ChessCard profile={chessProfile} />}
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15 }}
+          className="retro-card p-5 mt-6"
+        >
+          <div className="mb-2">
+            <h3 className="font-semibold text-retro-black dark:text-retro-cream text-lg">Open-source Contributions</h3>
+            <p className="text-sm text-retro-gray dark:text-retro-paper/70 mt-1">Selected highlights: community work.</p>
+          </div>
+
+          <ul className="mt-3 space-y-2 text-retro-gray dark:text-retro-paper/70 list-disc list-inside">
+            <li>
+              Contributed to <a href="https://learngitbranching.js.org/" target="_blank" rel="noreferrer" className="text-retro-orange hover:underline">learngitbranching</a> — an interactive Git learning website (UX/content improvements and bug fixes).
+            </li>
+            <li>
+              Added a Chess ELO estimation feature to <a href="https://chesskit.org/" target="_blank" rel="noreferrer" className="text-retro-orange hover:underline">chesskit</a> — improving analytics for community players.
+            </li>
+          </ul>
+        </motion.div>
       </motion.div>
     </section>
   );
