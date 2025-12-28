@@ -82,7 +82,7 @@ export const experiences: Experience[] = [
       'Implemented serverless, event-driven backend services on AWS (Lambda, Step Functions, EventBridge) to orchestrate complex ETL workflows for a major UK retailer, processing 50k+ product updates daily.',
       'Developed robust Java Spring Boot microservices using Nomad to manage core e-commerce domains (Products, Taxonomy, Inventory, Supplier & Location), leveraging Hibernate for efficient ORM and transactional integrity.',
       'Developed a centralized event-processing hub using Java Spring Boot, Nomad clusters and AWS Kinesis. Implemented multithreaded consumers to transform and route high-volume microservice events, significantly improving data consistency across the ecosystem',
-      'Optimized data ingestion pipelines by implementing a Change Data Capture (CDC) pattern with Node.js and SQS, reducing data synchronization latency by 35% across distributed systems.',
+      'Implemented Step Function to migrate 25 million stock records from legacy sytems to new microservices, ensuring zero downtime and data integrity during the transition.',
       'Designed and implemented resilient fault-tolerance strategies using Dead Letter Queues (DLQ) and exponential backoff retry mechanisms, ensuring 99.9% data reliability for high-volume supplier feeds.',
       'Extended the Backstage developer portal by writing custom backend plugins in Node.js, automating repository scaffolding and standardizing CI/CD configurations across engineering teams.',
     ],

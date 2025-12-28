@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { GitHubIcon, LeetCodeIcon, ExternalLinkIcon } from '../ui/Icons';
 import { profiles } from '@/data/portfolio';
 import { useGitHubData } from '@/hooks/useGitHubData';
@@ -61,6 +62,39 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
 };
 
 const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
+  const [data, setData] = useState<any | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const url = `https://alfa-leetcode-api.onrender.com/${profile.username}/profile`;
+    setLoading(true);
+    setError(null);
+
+    fetch(url, { signal: controller.signal })
+      .then(res => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      })
+      .then(json => {
+        setData(json);
+        setLoading(false);
+      })
+      .catch(err => {
+        if (err.name === 'AbortError') return;
+        setError(err.message || 'Failed to fetch LeetCode data');
+        setLoading(false);
+      });
+
+    return () => controller.abort();
+  }, [profile.username]);
+
+  const totalSolved = data?.totalSolved ?? null;
+  const easy = data?.easySolved ?? data?.matchedUserStats?.acSubmissionNum?.find((d: any) => d.difficulty === 'Easy')?.count ?? null;
+  const medium = data?.mediumSolved ?? data?.matchedUserStats?.acSubmissionNum?.find((d: any) => d.difficulty === 'Medium')?.count ?? null;
+  const hard = data?.hardSolved ?? data?.matchedUserStats?.acSubmissionNum?.find((d: any) => d.difficulty === 'Hard')?.count ?? null;
+
   return (
     <motion.a
       href={profile.link}
@@ -86,31 +120,45 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
         </span>
       </div>
 
-      <p className="text-sm text-retro-gray dark:text-retro-paper/70 mb-1">
-        @{profile.username}
-      </p>
-      <p className="text-sm text-retro-gray dark:text-retro-paper/70">
-        {profile.description}
-      </p>
+      <p className="text-sm text-retro-gray dark:text-retro-paper/70 mb-1">@{profile.username}</p>
+      {
+        (() => {
+          const totalStr = totalSolved != null ? totalSolved.toLocaleString() : '—';
+          const rankStr = data?.ranking != null ? data.ranking.toLocaleString() : '—';
+          const desc = loading
+            ? 'Loading LeetCode stats...'
+            : error
+            ? profile.description
+            : `${totalStr} solved • Rank ${rankStr}`;
+          return <p className="text-sm text-retro-gray dark:text-retro-paper/70">{desc}</p>;
+        })()
+      }
 
       <div className="flex gap-6 mt-4 pt-4 border-t border-retro-black/5 dark:border-white/5">
         <div>
-          <p className="font-semibold text-retro-black dark:text-retro-cream">
-            470+
-          </p>
-          <p className="text-xs text-retro-gray dark:text-retro-paper/60">
-            Problems Solved
-          </p>
+          <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : totalSolved ?? '—'}</p>
+          <p className="text-xs text-retro-gray dark:text-retro-paper/60">Problems Solved</p>
         </div>
-        <div>
-          <p className="font-semibold text-retro-black dark:text-retro-cream">
-            DSA
-          </p>
-          <p className="text-xs text-retro-gray dark:text-retro-paper/60">
-            Focus Area
-          </p>
+
+        <div className="grid grid-cols-3 gap-4 flex-1">
+          <div>
+            <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : easy ?? '—'}</p>
+            <p className="text-xs text-retro-gray dark:text-retro-paper/60">Easy</p>
+          </div>
+          <div>
+            <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : medium ?? '—'}</p>
+            <p className="text-xs text-retro-gray dark:text-retro-paper/60">Medium</p>
+          </div>
+          <div>
+            <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : hard ?? '—'}</p>
+            <p className="text-xs text-retro-gray dark:text-retro-paper/60">Hard</p>
+          </div>
         </div>
       </div>
+
+      {error && (
+        <p className="text-xs text-red-500 mt-3">Unable to fetch live LeetCode data.</p>
+      )}
     </motion.a>
   );
 };
