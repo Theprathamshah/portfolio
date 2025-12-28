@@ -163,9 +163,101 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
   );
 };
 
+const ChessCard = ({ profile }: { profile: typeof profiles[0] }) => {
+  const [data, setData] = useState<any | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const url = `https://api.chess.com/pub/player/${profile.username}/stats`;
+    setLoading(true);
+    setError(null);
+
+    fetch(url, { signal: controller.signal })
+      .then(res => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      })
+      .then(json => {
+        setData(json);
+        setLoading(false);
+      })
+      .catch(err => {
+        if (err.name === 'AbortError') return;
+        setError(err.message || 'Failed to fetch chess.com data');
+        setLoading(false);
+      });
+
+    return () => controller.abort();
+  }, [profile.username]);
+
+  const blitz = data?.chess_blitz?.last?.rating ?? null;
+  const rapid = data?.chess_rapid?.last?.rating ?? null;
+  const bullet = data?.chess_bullet?.last?.rating ?? null;
+  const tactics = data?.tactics?.highest?.rating ?? null;
+
+  const title = '♞ Chess (Strategy & Problem Solving)';
+
+  return (
+    <motion.a
+      href={profile.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.1 }}
+      className="retro-card retro-card-hover p-5 group block"
+    >
+      <div className="flex items-start justify-between mb-3">
+        <div className="flex items-center gap-3">
+          <div className="p-2 rounded-lg bg-retro-paper dark:bg-retro-gray/30">
+            <span className="text-retro-gray dark:text-retro-paper/70">♞</span>
+          </div>
+          <span className="font-semibold text-retro-black dark:text-retro-cream">{title}</span>
+        </div>
+        <span className="text-sm text-retro-orange flex items-center gap-1 group-hover:underline">
+          Visit <ExternalLinkIcon className="w-3.5 h-3.5" />
+        </span>
+      </div>
+
+      <p className="text-sm text-retro-gray dark:text-retro-paper/70 mb-1">@{profile.username}</p>
+      <p className="text-sm text-retro-gray dark:text-retro-paper/70">{loading ? 'Loading chess stats...' : error ? profile.description : `Best blitz ${data?.chess_blitz?.best?.rating ?? '—'}`}</p>
+
+      <div className="flex gap-6 mt-4 pt-4 border-t border-retro-black/5 dark:border-white/5">
+        <div>
+          <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : blitz ?? '—'}</p>
+          <p className="text-xs text-retro-gray dark:text-retro-paper/60">Blitz</p>
+        </div>
+
+        <div className="grid grid-cols-3 gap-4 flex-1">
+          <div>
+            <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : rapid ?? '—'}</p>
+            <p className="text-xs text-retro-gray dark:text-retro-paper/60">Rapid</p>
+          </div>
+          <div>
+            <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : bullet ?? '—'}</p>
+            <p className="text-xs text-retro-gray dark:text-retro-paper/60">Bullet</p>
+          </div>
+          <div>
+            <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : tactics ?? '—'}</p>
+            <p className="text-xs text-retro-gray dark:text-retro-paper/60">Tactics</p>
+          </div>
+        </div>
+      </div>
+
+      {error && (
+        <p className="text-xs text-red-500 mt-3">Unable to fetch chess.com data.</p>
+      )}
+    </motion.a>
+  );
+};
+
 export const Profiles = () => {
   const githubProfile = profiles.find(p => p.platform === 'GitHub');
   const leetcodeProfile = profiles.find(p => p.platform === 'LeetCode');
+  const chessProfile = profiles.find(p => p.platform === 'Chess.com');
 
   return (
     <section id="profiles" className="py-8">
@@ -185,6 +277,7 @@ export const Profiles = () => {
         <div className="grid md:grid-cols-2 gap-4">
           {githubProfile && <GitHubCard profile={githubProfile} />}
           {leetcodeProfile && <LeetCodeCard profile={leetcodeProfile} />}
+          {chessProfile && <ChessCard profile={chessProfile} />}
         </div>
       </motion.div>
     </section>

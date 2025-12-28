@@ -48,11 +48,11 @@ export const Hero = () => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ y: -2 }}
-                  className="p-2.5 rounded-lg bg-retro-paper dark:bg-retro-gray/30 text-retro-gray dark:text-retro-paper/70 hover:text-retro-orange hover:bg-retro-orange/10 transition-all"
+                  whileHover={{ y: -2, scale: 1.03 }}
+                  className="group p-2.5 rounded-lg bg-retro-paper dark:bg-retro-gray/30 text-retro-gray dark:text-retro-paper/70 hover:bg-retro-orange/10 transition-all"
                   aria-label={link.name}
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-5 h-5 transition-transform transition-colors duration-150 text-current group-hover:text-retro-orange group-hover:scale-110" />
                 </motion.a>
               );
             })}

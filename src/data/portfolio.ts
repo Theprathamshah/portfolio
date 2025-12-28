@@ -76,7 +76,7 @@ export const experiences: Experience[] = [
     company: 'Elevation Services',
     role: 'Fullstack Software Developer',
     type: 'Full-time',
-    duration: 'Sep 2023 — Present',
+    duration: 'June 2024 — Present',
     current: true,
     achievements: [
       'Implemented serverless, event-driven backend services on AWS (Lambda, Step Functions, EventBridge) to orchestrate complex ETL workflows for a major UK retailer, processing 50k+ product updates daily.',
@@ -89,25 +89,25 @@ export const experiences: Experience[] = [
     skills: ['AWS', 'Java', 'Spring Boot', 'Node.js', 'serverless', 'Backstage', 'React'],
   },
   {
-    company: 'Kevit.io',
-    role: 'Software Developer',
-    type: 'Full-time',
-    duration: 'Nov 2022 — Sep 2023',
+    company: 'Gateway',
+    role: 'Software Engineer Intern (Java)',
+    type: 'Internship',
+    duration: 'Nov 2023 - April 2024',
     achievements: [
-      'Developed high-performance microservices in NestJS and TypeScript deployed on AWS EKS, supporting large-scale concurrent requests with low latency through asynchronous messaging and query optimization.',
-      'Integrated third-party services including Twilio, Firebase, and SendGrid for real-time notifications and communication features.',
-      'Implemented standardized error handling, logging, and observability using Sentry and Grafana Loki to improve incident detection and resolution time.',
-      'Centralized authentication and identity management using Ory Kratos, streamlining user lifecycle processes across multiple services.',
+      'Designed and developed an automated video generation pipeline using Java, Spring Boot, and FFmpeg to produce high-quality videos at 60 FPS.',
+      'Implemented image processing workflows to optimize visual quality and performance during video rendering.',
+      'Built a scheduler-driven automation system to publish generated videos to the designated portal every Monday at 12 AM without manual intervention.',
+      'Ensured reliable and consistent content delivery through end-to-end automation of video generation and publishing.'
     ],
-    skills: ['NestJS', 'TypeScript', 'AWS EKS', 'Twilio', 'Sentry', 'Grafana & Loki'],
+    skills: ['Java', 'Spring Boot', 'FFmpeg', 'Image Processing', 'Automation', 'Backend Development', 'Scheduling Systems']
   },
   {
-    company: 'Inexture',
-    role: 'Software Developer',
+    company: 'TatvaSoft',
+    role: 'Software Developer Intern',
     type: 'Full-time',
-    duration: 'Jun 2021 — Jul 2022',
+    duration: 'May 2023 — June 2023',
     achievements: [
-      'Developed RESTful APIs using NestJS and TypeScript, implementing Redis-based server-side caching to efficiently handle peak traffic loads.',
+      'Developed a library management application using the MERN stack with an intuitive Material UI interface, global state management, and REST APIs to handle book inventory, user accounts, and transactions. Improved usability and streamlined operations for library staff and users.',
       'Built and deployed a full-stack internal resource management tool, handling database design in MongoDB and backend logic with Express.js.',
     ],
     skills: ['NestJS', 'TypeScript', 'Redis', 'MongoDB', 'Express.js'],
@@ -126,6 +126,12 @@ export const profiles: ProfileCard[] = [
     username: 'itspratham2911',
     link: 'https://leetcode.com/u/itspratham2911/',
     description: '485+ problems solved focusing on Data Structures & Algorithms, and System Design.',
+  },
+  {
+    platform: 'Chess.com',
+    username: 'IndicHorseman',
+    link: 'https://www.chess.com/member/IndicHorseman',
+    description: 'Chess ♟️ — Analytical thinking outside code',
   },
 ];
 
