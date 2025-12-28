@@ -68,24 +68,39 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
 
   useEffect(() => {
     const controller = new AbortController();
-    const url = `https://alfa-leetcode-api.onrender.com/${profile.username}/profile`;
+    const primary = `https://alfa-leetcode-api.onrender.com/${profile.username}/profile`;
+    const fallback = `https://leetcode-stats-api.herokuapp.com/${profile.username}`;
     setLoading(true);
     setError(null);
 
-    fetch(url, { signal: controller.signal })
-      .then(res => {
-        if (!res.ok) throw new Error('Network response was not ok');
-        return res.json();
-      })
-      .then(json => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(primary, { signal: controller.signal });
+        if (res.status === 429) throw new Error('rate_limited');
+        if (!res.ok) throw new Error('primary_failed');
+        const json = await res.json();
         setData(json);
         setLoading(false);
-      })
-      .catch(err => {
-        if (err.name === 'AbortError') return;
-        setError(err.message || 'Failed to fetch LeetCode data');
-        setLoading(false);
-      });
+        return;
+      } catch (err: any) {
+        if (err?.name === 'AbortError') return;
+        // Try fallback API
+        try {
+          const res2 = await fetch(fallback, { signal: controller.signal });
+          if (!res2.ok) throw new Error('fallback_failed');
+          const json2 = await res2.json();
+          setData(json2);
+          setLoading(false);
+          return;
+        } catch (err2: any) {
+          if (err2?.name === 'AbortError') return;
+          setError(err2?.message || 'Failed to fetch LeetCode data');
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
 
     return () => controller.abort();
   }, [profile.username]);
