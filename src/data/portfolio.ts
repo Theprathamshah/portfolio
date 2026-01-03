@@ -2,71 +2,64 @@ import type { Experience, ProfileCard, SocialLink, TechCategory } from '@/types'
 
 export const techStack: TechCategory[] = [
   {
-    title: 'Languages',
+    title: 'Systems & Core',
+    description: 'Where the real magic happens. Direct memory access or nothing.',
+    icon: 'circuit-board',
     items: [
       { name: 'Java' },
-      { name: 'TypeScript' },
-      { name: 'JavaScript' },
       { name: 'Go' },
       { name: 'Python' },
-      { name: 'SQL' }, // New: Essential for your DB list
+      { name: 'TypeScript' },
+      { name: 'JavaScript' },
+      { name: 'Linux' },
+      { name: 'Docker' },
+      { name: 'Microservices' },
+      { name: 'Event-Driven Design' },
+      { name: 'System Design' },
     ],
   },
   {
-    title: 'Backend Frameworks',
+    title: 'Backend & Data',
+    description: 'Handling data efficiently and keeping the server alive.',
+    icon: 'server',
     items: [
       { name: 'Spring Boot' },
       { name: 'Hibernate' },
       { name: 'NestJS' },
       { name: 'Express.js' },
-      { name: 'Serverless Framework' },
-      { name: 'JUnit / Mockito' }, // New: Shows coding quality
-      { name: 'Node.js' }, // New: Good to list explicitly
-    ],
-  },
-  {
-    title: 'Cloud & DevOps',
-    items: [
-      { name: 'AWS Lambda' },
-      { name: 'Step Functions' },
-      { name: 'EventBridge' },
-      { name: 'S3' },
-      { name: 'SQS' },
-      { name: 'SNS' },
-      { name: 'ECS Fargate' },
-      { name: 'Kinesis' },
-      { name: 'CloudWatch' }, // New: Essential for monitoring AWS
-      { name: 'IAM' }, // New: Shows security awareness
-      { name: 'Docker' },
-      { name: 'Terraform' },
-      { name: 'GitLab CI/CD' },
-      { name: 'LocalStack' }, // New: Great for testing AWS locally
-    ],
-  },
-  {
-    title: 'Databases & Messaging',
-    items: [
+      { name: 'Node.js' },
       { name: 'PostgreSQL' },
       { name: 'MySQL' },
       { name: 'MongoDB' },
       { name: 'DynamoDB' },
       { name: 'Redis' },
       { name: 'RabbitMQ' },
-      { name: 'Elasticsearch' }, // New: Pairs well with Kinesis/Log processing
+      { name: 'Elasticsearch' },
+      { name: 'AWS Lambda' },
+      { name: 'Step Functions' },
+      { name: 'EventBridge' },
+      { name: 'S3' },
+      { name: 'SQS' },
+      { name: 'SNS' },
+      { name: 'Kinesis' },
+      { name: 'Terraform' },
+      { name: 'GitLab CI/CD' },
+      { name: 'JUnit / Mockito' },
+      { name: 'REST / GraphQL' },
     ],
   },
   {
-    title: 'Engineering Culture', // Renamed from "Other" for more impact
+    title: 'Frontend (The Vibe)',
+    description: 'Making things look good enough to click.',
+    icon: 'palette',
     items: [
-      { name: 'REST / GraphQL' }, // New: API standards
-      { name: 'Microservices' }, // New: Architectural pattern
-      { name: 'Event-Driven Design' }, // New: Crucial for your Kinesis exp
-      { name: 'Unit & Integration Testing' }, // New: Shows code reliability
-      { name: 'Grafana' },
-      { name: 'Prometheus' },
-      { name: 'Swagger API' },
-      { name: 'Git' },
-      { name: 'Agile / Scrum' }, // New: Workflow
+      { name: 'React' },
+      { name: 'TypeScript' },
+      { name: 'JavaScript' },
+      { name: 'HTML5' },
+      { name: 'CSS3' },
+      { name: 'Tailwind CSS' },
+      { name: 'Framer Motion' },
     ],
   },
 ];
@@ -104,7 +97,7 @@ export const experiences: Experience[] = [
   {
     company: 'TatvaSoft',
     role: 'Software Developer Intern',
-    type: 'Full-time',
+    type: 'Internship',
     duration: 'May 2023 — June 2023',
     achievements: [
       'Developed a library management application using the MERN stack with an intuitive Material UI interface, global state management, and REST APIs to handle book inventory, user accounts, and transactions. Improved usability and streamlined operations for library staff and users.',

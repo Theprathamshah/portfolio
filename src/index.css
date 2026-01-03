@@ -5,6 +5,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
   }
   
   body {
@@ -42,11 +43,11 @@
 
 @layer components {
   .retro-card {
-    @apply bg-white border border-retro-black/10 rounded-lg;
+    @apply bg-white border border-retro-black/10 rounded-lg shadow-sm;
   }
 
   html.dark .retro-card {
-    @apply bg-retro-dark border-white/10;
+    @apply bg-retro-dark border-white/10 shadow-lg;
   }
 
   .retro-card-hover {

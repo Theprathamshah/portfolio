@@ -4,20 +4,37 @@ import { useTheme } from '@/context/ThemeContext';
 import { SunIcon, MoonIcon } from '../ui/Icons';
 
 const navItems = [
-  { label: 'Skills', href: '#tech' },
+  { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Profiles', href: '#profiles' },
+  { label: 'Tech Stack', href: '#tech' },
+  { label: 'Achievements', href: '#achievements' },
 ];
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('about');
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      const sections: string[] = ['about', 'experience', 'tech', 'achievements'];
+      const scrollPosition = window.scrollY + 200;
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const sectionId = sections[i];
+        if (!sectionId) continue;
+        const section = document.getElementById(sectionId);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sectionId);
+          break;
+        }
+      }
     };
+    
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -38,7 +55,7 @@ export const Navbar = () => {
     >
       <div className="max-w-4xl mx-auto flex items-center justify-between">
         <motion.a
-          href="#"
+          href="#about"
           whileHover={{ scale: 1.02 }}
           className="font-semibold text-lg text-retro-black dark:text-retro-cream"
         >
@@ -46,17 +63,31 @@ export const Navbar = () => {
         </motion.a>
 
         <div className="flex items-center gap-6">
-          <ul className="hidden md:flex items-center gap-6">
-            {navItems.map((item) => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  className="text-sm text-retro-gray dark:text-retro-paper/70 hover:text-retro-orange transition-colors"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+          <ul className="hidden md:flex items-center gap-2">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.replace('#', '');
+              return (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                      isActive
+                        ? 'text-retro-orange bg-retro-orange/10'
+                        : 'text-retro-gray dark:text-retro-paper/70 hover:text-retro-orange hover:bg-retro-paper dark:hover:bg-retro-gray/30'
+                    }`}
+                  >
+                    {item.label}
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeSection"
+                        className="absolute inset-0 rounded-lg bg-retro-orange/10 border border-retro-orange/20"
+                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           <button

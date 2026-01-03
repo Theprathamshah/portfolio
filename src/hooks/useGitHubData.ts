@@ -9,6 +9,7 @@ interface GitHubUser {
 interface GitHubData {
   repos: number;
   followers: number;
+  following: number;
   loading: boolean;
   error: boolean;
 }
@@ -17,6 +18,7 @@ export const useGitHubData = (username: string): GitHubData => {
   const [data, setData] = useState<GitHubData>({
     repos: 0,
     followers: 0,
+    following: 0,
     loading: true,
     error: false,
   });
@@ -31,6 +33,7 @@ export const useGitHubData = (username: string): GitHubData => {
         setData({
           repos: userData.public_repos,
           followers: userData.followers,
+          following: userData.following,
           loading: false,
           error: false,
         });

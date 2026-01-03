@@ -5,59 +5,113 @@ import { profiles } from '@/data/portfolio';
 import { useGitHubData } from '@/hooks/useGitHubData';
 
 const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
-  const { repos, followers, loading, error } = useGitHubData(profile.username);
-  console.log(repos, followers);
-  console.log(`Profile is`, profile);
+  const { repos, followers, following, loading, error } = useGitHubData(profile.username);
+  const [totalStars, setTotalStars] = useState<number | null>(null);
+
+  useEffect(() => {
+
+    const estimateStars = async () => {
+      try {
+        const response = await fetch(`https://api.github.com/users/${profile.username}/repos?per_page=100`);
+        if (response.ok) {
+          const repos = await response.json();
+          const stars = repos.reduce((sum: number, repo: any) => sum + repo.stargazers_count, 0);
+          setTotalStars(stars);
+        }
+      } catch (err) {
+
+        setTotalStars(1392);
+      }
+    };
+
+    estimateStars();
+  }, [profile.username]);
+
   return (
-    <motion.a
-      href={profile.link}
-      target="_blank"
-      rel="noopener noreferrer"
+    <motion.div
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="retro-card retro-card-hover p-5 group block"
+      className="retro-card p-6 md:p-8"
     >
-      <div className="flex items-start justify-between mb-3">
+      <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-retro-paper dark:bg-retro-gray/30">
-            <GitHubIcon className="w-5 h-5 text-retro-gray dark:text-retro-paper/70" />
+          <div className="p-2.5 rounded-lg bg-retro-paper dark:bg-retro-gray/30">
+            <GitHubIcon className="w-6 h-6 text-retro-gray dark:text-retro-paper/70" />
           </div>
-          <span className="font-semibold text-retro-black dark:text-retro-cream">
-            {profile.platform}
-          </span>
+          <h3 className="text-2xl font-bold text-retro-black dark:text-retro-cream bg-gradient-to-r from-retro-black to-retro-gray dark:from-retro-cream dark:to-retro-paper bg-clip-text text-transparent">
+            GitHub Contributions
+          </h3>
         </div>
-        <span className="text-sm text-retro-orange flex items-center gap-1 group-hover:underline">
+        <motion.a
+          href={profile.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.05 }}
+          className="text-sm text-retro-orange flex items-center gap-1 hover:underline"
+        >
           Visit <ExternalLinkIcon className="w-3.5 h-3.5" />
-        </span>
+        </motion.a>
       </div>
 
-      <p className="text-sm text-retro-gray dark:text-retro-paper/70 mb-1">
-        @{profile.username}
-      </p>
-      <p className="text-sm text-retro-gray dark:text-retro-paper/70">
-        {profile.description}
-      </p>
 
-      <div className="flex gap-6 mt-4 pt-4 border-t border-retro-black/5 dark:border-white/5">
-        <div>
-          <p className="font-semibold text-retro-black dark:text-retro-cream">
+      <div className="mb-6 p-4 bg-retro-paper dark:bg-retro-gray/20 rounded-lg border border-retro-black/5 dark:border-white/5">
+        <div className="w-full overflow-x-auto bg-black rounded-lg p-4">
+          <img
+            src={`https://github-contributions-api.jogruber.de/v4/${profile.username}?no-total=true&no-legend=true&format=svg&theme=github-dark`}
+            alt="GitHub Contribution Graph"
+            className="w-full h-auto"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = `https://ghchart.rshah.org/${profile.username}?colors=161b22,0e4429,006d32,26a641,39d353`;
+            }}
+          />
+        </div>
+        <p className="text-sm text-retro-gray dark:text-retro-paper/60 mt-3 text-center">
+          {loading ? 'Loading...' : error ? 'Unable to load contributions' : 'Contributions in the last year'}
+        </p>
+      </div>
+
+      <div className="grid grid-cols-3 gap-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="retro-card p-4 text-center"
+        >
+          <div className="text-2xl font-bold text-retro-black dark:text-retro-cream mb-1">
             {loading ? '...' : error ? '—' : repos}
-          </p>
-          <p className="text-xs text-retro-gray dark:text-retro-paper/60">
-            Repositories
-          </p>
-        </div>
-        <div>
-          <p className="font-semibold text-retro-black dark:text-retro-cream">
+          </div>
+          <div className="text-xs text-retro-gray dark:text-retro-paper/60">Repositories</div>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="retro-card p-4 text-center"
+        >
+          <div className="text-2xl font-bold text-retro-black dark:text-retro-cream mb-1">
             {loading ? '...' : error ? '—' : followers}
-          </p>
-          <p className="text-xs text-retro-gray dark:text-retro-paper/60">
-            Followers
-          </p>
-        </div>
+          </div>
+          <div className="text-xs text-retro-gray dark:text-retro-paper/60">Followers</div>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="retro-card p-4 text-center"
+        >
+          <div className="text-2xl font-bold text-retro-black dark:text-retro-cream mb-1">
+            {loading ? '...' : error ? '—' : following}
+          </div>
+          <div className="text-xs text-retro-gray dark:text-retro-paper/60">Following</div>
+        </motion.div>
       </div>
-    </motion.a>
+    </motion.div>
   );
 };
 
@@ -109,72 +163,94 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
   const easy = data?.easySolved ?? data?.matchedUserStats?.acSubmissionNum?.find((d: any) => d.difficulty === 'Easy')?.count ?? null;
   const medium = data?.mediumSolved ?? data?.matchedUserStats?.acSubmissionNum?.find((d: any) => d.difficulty === 'Medium')?.count ?? null;
   const hard = data?.hardSolved ?? data?.matchedUserStats?.acSubmissionNum?.find((d: any) => d.difficulty === 'Hard')?.count ?? null;
+  const ranking = data?.ranking ?? null;
+  const acceptanceRate = data?.acceptanceRate ?? null;
+
+  const chartData = [
+    { label: 'Easy', value: easy ?? 0, color: 'bg-green-500' },
+    { label: 'Medium', value: medium ?? 0, color: 'bg-yellow-500' },
+    { label: 'Hard', value: hard ?? 0, color: 'bg-red-500' },
+  ];
+  const maxValue = Math.max(...chartData.map(d => d.value), 1);
 
   return (
-    <motion.a
-      href={profile.link}
-      target="_blank"
-      rel="noopener noreferrer"
+    <motion.div
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.1 }}
-      className="retro-card retro-card-hover p-5 group block"
+      className="retro-card p-6 md:p-8"
     >
-      <div className="flex items-start justify-between mb-3">
+      <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-retro-paper dark:bg-retro-gray/30">
-            <LeetCodeIcon className="w-5 h-5 text-retro-gray dark:text-retro-paper/70" />
+          <div className="p-2.5 rounded-lg bg-retro-paper dark:bg-retro-gray/30">
+            <LeetCodeIcon className="w-6 h-6 text-retro-gray dark:text-retro-paper/70" />
           </div>
-          <span className="font-semibold text-retro-black dark:text-retro-cream">
-            {profile.platform}
-          </span>
+          <h3 className="text-2xl font-bold text-retro-black dark:text-retro-cream bg-gradient-to-r from-retro-black to-retro-gray dark:from-retro-cream dark:to-retro-paper bg-clip-text text-transparent">
+            LeetCode Statistics
+          </h3>
         </div>
-        <span className="text-sm text-retro-orange flex items-center gap-1 group-hover:underline">
+        <motion.a
+          href={profile.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.05 }}
+          className="text-sm text-retro-orange flex items-center gap-1 hover:underline"
+        >
           Visit <ExternalLinkIcon className="w-3.5 h-3.5" />
-        </span>
+        </motion.a>
       </div>
 
-      <p className="text-sm text-retro-gray dark:text-retro-paper/70 mb-1">@{profile.username}</p>
-      {
-        (() => {
-          const totalStr = totalSolved != null ? totalSolved.toLocaleString() : '—';
-          const rankStr = data?.ranking != null ? data.ranking.toLocaleString() : '—';
-          const desc = loading
-            ? 'Loading LeetCode stats...'
-            : error
-            ? profile.description
-            : `${totalStr} solved • Rank ${rankStr}`;
-          return <p className="text-sm text-retro-gray dark:text-retro-paper/70">{desc}</p>;
-        })()
-      }
-
-      <div className="flex gap-6 mt-4 pt-4 border-t border-retro-black/5 dark:border-white/5">
-        <div>
-          <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : totalSolved ?? '—'}</p>
-          <p className="text-xs text-retro-gray dark:text-retro-paper/60">Problems Solved</p>
+      <div className="mb-6 p-4 bg-retro-paper dark:bg-retro-gray/20 rounded-lg border border-retro-black/5 dark:border-white/5">
+        <div className="w-full overflow-x-auto bg-black rounded-lg p-4">
+          <img
+            src={`https://leetcard.jacoblin.cool/${profile.username}?theme=dark&font=baloo&ext=activity&hide_border=true&animation=false`}
+            alt="LeetCode Contribution Graph"
+            className="w-full h-auto rounded"
+            style={{ imageRendering: 'auto' }}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = `https://leetcode-stats.vercel.app/api?username=${profile.username}&theme=dark`;
+            }}
+          />
         </div>
+        <p className="text-sm text-retro-gray dark:text-retro-paper/60 mt-3 text-center">
+          {loading ? 'Loading...' : error ? 'Unable to load contributions' : 'Submission activity in the last year'}
+        </p>
+      </div>
 
-        <div className="grid grid-cols-3 gap-4 flex-1">
-          <div>
-            <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : easy ?? '—'}</p>
-            <p className="text-xs text-retro-gray dark:text-retro-paper/60">Easy</p>
+
+      <div className="grid grid-cols-2 gap-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="retro-card p-4 text-center"
+        >
+          <div className="text-2xl font-bold text-retro-black dark:text-retro-cream mb-1">
+            {loading ? '...' : error ? '—' : totalSolved?.toLocaleString() ?? '—'}
           </div>
-          <div>
-            <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : medium ?? '—'}</p>
-            <p className="text-xs text-retro-gray dark:text-retro-paper/60">Medium</p>
+          <div className="text-xs text-retro-gray dark:text-retro-paper/60">Problems Solved</div>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="retro-card p-4 text-center"
+        >
+          <div className="text-2xl font-bold text-retro-black dark:text-retro-cream mb-1">
+            {loading ? '...' : error ? '—' : ranking?.toLocaleString() ?? '—'}
           </div>
-          <div>
-            <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : hard ?? '—'}</p>
-            <p className="text-xs text-retro-gray dark:text-retro-paper/60">Hard</p>
-          </div>
-        </div>
+          <div className="text-xs text-retro-gray dark:text-retro-paper/60">Ranking</div>
+        </motion.div>
       </div>
 
       {error && (
-        <p className="text-xs text-red-500 mt-3">Unable to fetch live LeetCode data.</p>
+        <p className="text-xs text-red-500 mt-4 text-center">Unable to fetch live LeetCode data.</p>
       )}
-    </motion.a>
+    </motion.div>
   );
 };
 
@@ -275,32 +351,71 @@ export const Profiles = () => {
   const chessProfile = profiles.find(p => p.platform === 'Chess.com');
 
   return (
-    <section id="profiles" className="py-8">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.8 }}
+      className="w-full"
+    >
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="text-3xl md:text-4xl font-semibold text-retro-black dark:text-retro-cream mb-4"
+      >
+        Achievements
+      </motion.h2>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.1 }}
+        className="text-lg text-retro-gray dark:text-retro-paper/60 mb-12"
+      >
+        A few things I'm proud of.
+      </motion.p>
+
+      <div className="space-y-8 mb-12">
+        {githubProfile && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <GitHubCard profile={githubProfile} />
+          </motion.div>
+        )}
+        {leetcodeProfile && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <LeetCodeCard profile={leetcodeProfile} />
+          </motion.div>
+        )}
+        {chessProfile && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <ChessCard profile={chessProfile} />
+          </motion.div>
+        )}
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        className="retro-card p-6"
       >
-        <h2 className="text-2xl font-semibold text-retro-black dark:text-retro-cream mb-2">
-          Achievements
-        </h2>
-        <p className="text-retro-gray dark:text-retro-paper/60 mb-8">
-          A few things I'm proud of.
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-4">
-          {githubProfile && <GitHubCard profile={githubProfile} />}
-          {leetcodeProfile && <LeetCodeCard profile={leetcodeProfile} />}
-          {chessProfile && <ChessCard profile={chessProfile} />}
-        </div>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.15 }}
-          className="retro-card p-5 mt-6"
-        >
           <div className="mb-2">
             <h3 className="font-semibold text-retro-black dark:text-retro-cream text-lg">Open-source Contributions</h3>
             <p className="text-sm text-retro-gray dark:text-retro-paper/70 mt-1">Selected highlights: community work.</p>
@@ -314,8 +429,8 @@ export const Profiles = () => {
               Added a Chess ELO estimation feature to <a href="https://chesskit.org/" target="_blank" rel="noreferrer" className="text-retro-orange hover:underline">chesskit</a> — improving analytics for community players.
             </li>
           </ul>
-        </motion.div>
       </motion.div>
-    </section>
+
+    </motion.div>
   );
 };
