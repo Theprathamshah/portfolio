@@ -6,26 +6,6 @@ import { useGitHubData } from '@/hooks/useGitHubData';
 
 const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
   const { repos, followers, following, loading, error } = useGitHubData(profile.username);
-  const [totalStars, setTotalStars] = useState<number | null>(null);
-
-  useEffect(() => {
-
-    const estimateStars = async () => {
-      try {
-        const response = await fetch(`https://api.github.com/users/${profile.username}/repos?per_page=100`);
-        if (response.ok) {
-          const repos = await response.json();
-          const stars = repos.reduce((sum: number, repo: any) => sum + repo.stargazers_count, 0);
-          setTotalStars(stars);
-        }
-      } catch (err) {
-
-        setTotalStars(1392);
-      }
-    };
-
-    estimateStars();
-  }, [profile.username]);
 
   return (
     <motion.div
@@ -160,18 +140,13 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
   }, [profile.username]);
 
   const totalSolved = data?.totalSolved ?? null;
+  // @ts-ignore
   const easy = data?.easySolved ?? data?.matchedUserStats?.acSubmissionNum?.find((d: any) => d.difficulty === 'Easy')?.count ?? null;
+  // @ts-ignore
   const medium = data?.mediumSolved ?? data?.matchedUserStats?.acSubmissionNum?.find((d: any) => d.difficulty === 'Medium')?.count ?? null;
+  // @ts-ignore
   const hard = data?.hardSolved ?? data?.matchedUserStats?.acSubmissionNum?.find((d: any) => d.difficulty === 'Hard')?.count ?? null;
   const ranking = data?.ranking ?? null;
-  const acceptanceRate = data?.acceptanceRate ?? null;
-
-  const chartData = [
-    { label: 'Easy', value: easy ?? 0, color: 'bg-green-500' },
-    { label: 'Medium', value: medium ?? 0, color: 'bg-yellow-500' },
-    { label: 'Hard', value: hard ?? 0, color: 'bg-red-500' },
-  ];
-  const maxValue = Math.max(...chartData.map(d => d.value), 1);
 
   return (
     <motion.div
