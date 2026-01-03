@@ -15,7 +15,7 @@ export const Experience = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-3xl md:text-4xl font-semibold text-retro-black dark:text-retro-cream mb-4"
+        className="text-3xl md:text-4xl font-semibold text-retro-black dark:text-white mb-4"
       >
         Professional Journey
       </motion.h2>
@@ -44,7 +44,7 @@ export const Experience = () => {
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-5 pb-4 border-b border-retro-black/5 dark:border-white/5">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-xl md:text-2xl font-bold text-retro-black dark:text-retro-cream">
+                  <h3 className="text-xl md:text-2xl font-bold text-retro-black dark:text-white">
                     {exp.company}
                   </h3>
                   {exp.current && (

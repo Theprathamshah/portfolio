@@ -39,7 +39,7 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
           <div className="p-2.5 rounded-lg bg-retro-paper dark:bg-retro-gray/30">
             <GitHubIcon className="w-6 h-6 text-retro-gray dark:text-retro-paper/70" />
           </div>
-          <h3 className="text-2xl font-bold text-retro-black dark:text-retro-cream bg-gradient-to-r from-retro-black to-retro-gray dark:from-retro-cream dark:to-retro-paper bg-clip-text text-transparent">
+          <h3 className="text-2xl font-bold text-retro-black dark:text-white bg-gradient-to-r from-retro-black to-retro-gray dark:from-white dark:to-white/80 bg-clip-text text-transparent">
             GitHub Contributions
           </h3>
         </div>
@@ -79,7 +79,7 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
           transition={{ delay: 0.1 }}
           className="retro-card p-4 text-center"
         >
-          <div className="text-2xl font-bold text-retro-black dark:text-retro-cream mb-1">
+          <div className="text-2xl font-bold text-retro-black dark:text-white mb-1">
             {loading ? '...' : error ? '—' : repos}
           </div>
           <div className="text-xs text-retro-gray dark:text-retro-paper/60">Repositories</div>
@@ -92,7 +92,7 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
           transition={{ delay: 0.2 }}
           className="retro-card p-4 text-center"
         >
-          <div className="text-2xl font-bold text-retro-black dark:text-retro-cream mb-1">
+          <div className="text-2xl font-bold text-retro-black dark:text-white mb-1">
             {loading ? '...' : error ? '—' : followers}
           </div>
           <div className="text-xs text-retro-gray dark:text-retro-paper/60">Followers</div>
@@ -105,7 +105,7 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
           transition={{ delay: 0.3 }}
           className="retro-card p-4 text-center"
         >
-          <div className="text-2xl font-bold text-retro-black dark:text-retro-cream mb-1">
+          <div className="text-2xl font-bold text-retro-black dark:text-white mb-1">
             {loading ? '...' : error ? '—' : following}
           </div>
           <div className="text-xs text-retro-gray dark:text-retro-paper/60">Following</div>
@@ -186,7 +186,7 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
           <div className="p-2.5 rounded-lg bg-retro-paper dark:bg-retro-gray/30">
             <LeetCodeIcon className="w-6 h-6 text-retro-gray dark:text-retro-paper/70" />
           </div>
-          <h3 className="text-2xl font-bold text-retro-black dark:text-retro-cream bg-gradient-to-r from-retro-black to-retro-gray dark:from-retro-cream dark:to-retro-paper bg-clip-text text-transparent">
+          <h3 className="text-2xl font-bold text-retro-black dark:text-white bg-gradient-to-r from-retro-black to-retro-gray dark:from-white dark:to-white/80 bg-clip-text text-transparent">
             LeetCode Statistics
           </h3>
         </div>
@@ -227,7 +227,7 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
           transition={{ delay: 0.1 }}
           className="retro-card p-4 text-center"
         >
-          <div className="text-2xl font-bold text-retro-black dark:text-retro-cream mb-1">
+          <div className="text-2xl font-bold text-retro-black dark:text-white mb-1">
             {loading ? '...' : error ? '—' : totalSolved?.toLocaleString() ?? '—'}
           </div>
           <div className="text-xs text-retro-gray dark:text-retro-paper/60">Problems Solved</div>
@@ -240,7 +240,7 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
           transition={{ delay: 0.2 }}
           className="retro-card p-4 text-center"
         >
-          <div className="text-2xl font-bold text-retro-black dark:text-retro-cream mb-1">
+          <div className="text-2xl font-bold text-retro-black dark:text-white mb-1">
             {loading ? '...' : error ? '—' : ranking?.toLocaleString() ?? '—'}
           </div>
           <div className="text-xs text-retro-gray dark:text-retro-paper/60">Ranking</div>
@@ -306,7 +306,7 @@ const ChessCard = ({ profile }: { profile: typeof profiles[0] }) => {
           <div className="p-2 rounded-lg bg-retro-paper dark:bg-retro-gray/30">
             <span className="text-retro-gray dark:text-retro-paper/70">♞</span>
           </div>
-          <span className="font-semibold text-retro-black dark:text-retro-cream">{title}</span>
+          <span className="font-semibold text-retro-black dark:text-white">{title}</span>
         </div>
         <span className="text-sm text-retro-orange flex items-center gap-1 group-hover:underline">
           Visit <ExternalLinkIcon className="w-3.5 h-3.5" />
@@ -318,21 +318,21 @@ const ChessCard = ({ profile }: { profile: typeof profiles[0] }) => {
 
       <div className="flex gap-6 mt-4 pt-4 border-t border-retro-black/5 dark:border-white/5">
         <div>
-          <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : blitz ?? '—'}</p>
+          <p className="font-semibold text-retro-black dark:text-white">{loading ? '...' : error ? '—' : blitz ?? '—'}</p>
           <p className="text-xs text-retro-gray dark:text-retro-paper/60">Blitz</p>
         </div>
 
         <div className="grid grid-cols-3 gap-4 flex-1">
           <div>
-            <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : rapid ?? '—'}</p>
-            <p className="text-xs text-retro-gray dark:text-retro-paper/60">Rapid</p>
+            <p className="font-semibold text-retro-black dark:text-white">{loading ? '...' : error ? '—' : rapid ?? '—'}</p>
+            <p className="text-xs text-retro-gray dark:text-white/60">Rapid</p>
           </div>
           <div>
-            <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : bullet ?? '—'}</p>
-            <p className="text-xs text-retro-gray dark:text-retro-paper/60">Bullet</p>
+            <p className="font-semibold text-retro-black dark:text-white">{loading ? '...' : error ? '—' : bullet ?? '—'}</p>
+            <p className="text-xs text-retro-gray dark:text-white/60">Bullet</p>
           </div>
           <div>
-            <p className="font-semibold text-retro-black dark:text-retro-cream">{loading ? '...' : error ? '—' : tactics ?? '—'}</p>
+            <p className="font-semibold text-retro-black dark:text-white">{loading ? '...' : error ? '—' : tactics ?? '—'}</p>
             <p className="text-xs text-retro-gray dark:text-retro-paper/60">Tactics</p>
           </div>
         </div>
@@ -363,7 +363,7 @@ export const Profiles = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-3xl md:text-4xl font-semibold text-retro-black dark:text-retro-cream mb-4"
+        className="text-3xl md:text-4xl font-semibold text-retro-black dark:text-white mb-4"
       >
         Achievements
       </motion.h2>
@@ -417,7 +417,7 @@ export const Profiles = () => {
         className="retro-card p-6"
       >
           <div className="mb-2">
-            <h3 className="font-semibold text-retro-black dark:text-retro-cream text-lg">Open-source Contributions</h3>
+            <h3 className="font-semibold text-retro-black dark:text-white text-lg">Open-source Contributions</h3>
             <p className="text-sm text-retro-gray dark:text-retro-paper/70 mt-1">Selected highlights: community work.</p>
           </div>
 

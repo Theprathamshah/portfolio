@@ -9,18 +9,24 @@ export default {
     extend: {
       colors: {
         retro: {
-          black: '#1a1a1a',
-          dark: '#2d2d2d',
-          gray: '#4a4a4a',
-          cream: '#f5f0e6',
-          paper: '#e8e0d0',
-          orange: '#e07b39',
-          rust: '#c45c26',
-          teal: '#2d8a8a',
-          green: '#4a7c59',
-          brown: '#8b6914',
-          red: '#c44536',
-          purple: '#6b5b95',
+          // Modern dark theme (inspired by adittya.site)
+          black: '#0a0a0a',        // Very dark background
+          dark: '#1a1a1a',         // Card backgrounds
+          darker: '#141414',       // Slightly lighter than black
+          gray: '#3a3a3a',         // Borders and subtle elements
+          'light-gray': '#525252', // Hover states
+          // Light theme (complementary)
+          cream: '#fafafa',        // Clean white background
+          paper: '#ffffff',        // Pure white for cards
+          offWhite: '#f5f5f5',     // Subtle backgrounds
+          // Accent colors (kept vibrant)
+          orange: '#ff6b35',       // More vibrant orange
+          rust: '#e55a2b',         // Darker orange
+          teal: '#00d4aa',         // Modern teal/cyan
+          green: '#10b981',        // Modern green
+          blue: '#3b82f6',         // Modern blue
+          purple: '#8b5cf6',       // Modern purple
+          red: '#ef4444',          // Modern red
         },
       },
       fontFamily: {

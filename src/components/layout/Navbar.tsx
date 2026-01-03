@@ -47,7 +47,7 @@ export const Navbar = () => {
         fixed top-0 left-0 right-0 z-50 px-4 py-3
         transition-all duration-300
         ${isScrolled 
-          ? 'bg-retro-cream/80 dark:bg-retro-black/80 backdrop-blur-md border-b border-retro-black/5 dark:border-white/5' 
+          ? 'bg-retro-cream/90 dark:bg-retro-black/90 backdrop-blur-md border-b border-retro-black/5 dark:border-retro-gray/20' 
           : 'bg-transparent'
         }
       `}
@@ -57,7 +57,7 @@ export const Navbar = () => {
         <motion.a
           href="#about"
           whileHover={{ scale: 1.02 }}
-          className="font-semibold text-lg text-retro-black dark:text-retro-cream"
+          className="font-semibold text-lg text-retro-black dark:text-white"
         >
           Pratham Shah
         </motion.a>
@@ -72,8 +72,8 @@ export const Navbar = () => {
                     href={item.href}
                     className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                       isActive
-                        ? 'text-retro-orange bg-retro-orange/10'
-                        : 'text-retro-gray dark:text-retro-paper/70 hover:text-retro-orange hover:bg-retro-paper dark:hover:bg-retro-gray/30'
+                        ? 'text-retro-orange bg-retro-orange/10 dark:bg-retro-orange/20 dark:text-retro-orange'
+                        : 'text-retro-gray dark:text-white/70 hover:text-retro-orange hover:bg-retro-offWhite dark:hover:bg-retro-gray/20'
                     }`}
                   >
                     {item.label}

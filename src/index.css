@@ -13,7 +13,7 @@
   }
 
   html.dark body {
-    @apply bg-retro-black text-retro-cream;
+    @apply bg-retro-black text-white antialiased;
   }
 
   html.dark {
@@ -22,6 +22,10 @@
 
   ::selection {
     @apply bg-retro-orange text-white;
+  }
+
+  html.dark ::selection {
+    @apply bg-retro-orange/80 text-white;
   }
 
   ::-webkit-scrollbar {
@@ -33,25 +37,33 @@
   }
 
   html.dark ::-webkit-scrollbar-track {
-    @apply bg-retro-dark;
+    @apply bg-retro-black;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-retro-gray/50 rounded-full;
+    @apply bg-retro-gray/30 rounded-full;
+  }
+
+  html.dark ::-webkit-scrollbar-thumb {
+    @apply bg-retro-light-gray/50 hover:bg-retro-light-gray/70;
   }
 }
 
 @layer components {
   .retro-card {
-    @apply bg-white border border-retro-black/10 rounded-lg shadow-sm;
+    @apply bg-retro-paper border border-retro-black/5 rounded-xl shadow-sm;
   }
 
   html.dark .retro-card {
-    @apply bg-retro-dark border-white/10 shadow-lg;
+    @apply bg-retro-dark border-retro-gray/20 shadow-xl;
   }
 
   .retro-card-hover {
-    @apply hover:border-retro-orange/50 hover:shadow-lg hover:shadow-retro-orange/5 transition-all duration-200;
+    @apply hover:border-retro-orange/30 hover:shadow-lg hover:shadow-retro-orange/10 transition-all duration-200;
+  }
+
+  html.dark .retro-card-hover {
+    @apply hover:border-retro-orange/40 hover:shadow-xl hover:shadow-retro-orange/20;
   }
 
   .retro-btn {
@@ -72,7 +84,7 @@
   }
 
   html.dark .retro-btn-secondary {
-    @apply bg-retro-dark text-retro-cream hover:bg-retro-gray/30;
+    @apply bg-retro-dark text-white hover:bg-retro-gray/30;
   }
 
   .skill-tag {
@@ -81,7 +93,7 @@
   }
 
   html.dark .skill-tag {
-    @apply bg-retro-gray/30 text-retro-cream border-white/5;
+    @apply bg-retro-gray/20 text-white/90 border-retro-gray/30 hover:border-retro-orange/40;
   }
 
   .section-divider {
@@ -89,6 +101,6 @@
   }
 
   html.dark .section-divider {
-    @apply via-white/10;
+    @apply via-white/5;
   }
 }

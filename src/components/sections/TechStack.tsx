@@ -23,7 +23,7 @@ export const TechStack = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-3xl md:text-4xl font-semibold text-retro-black dark:text-retro-cream mb-2"
+        className="text-3xl md:text-4xl font-semibold text-retro-black dark:text-white mb-2"
       >
         Skills & Technical Arsenal
       </motion.h2>
@@ -56,7 +56,7 @@ export const TechStack = () => {
                     <IconComponent className="w-5 h-5" />
                   </div>
                 )}
-                <h3 className="text-xl font-bold text-retro-black dark:text-retro-cream">
+                <h3 className="text-xl font-bold text-retro-black dark:text-white">
                   {category.title}
                 </h3>
               </div>
@@ -76,7 +76,7 @@ export const TechStack = () => {
                     viewport={{ once: true }}
                     transition={{ delay: categoryIndex * 0.1 + itemIndex * 0.02 }}
                     whileHover={{ scale: 1.05, y: -2 }}
-                    className="inline-flex items-center px-3.5 py-1.5 text-sm font-medium rounded-full bg-retro-paper dark:bg-retro-gray/30 text-retro-black dark:text-retro-cream border border-retro-black/5 dark:border-white/5 hover:border-retro-orange/40 hover:bg-retro-orange/5 transition-all duration-200 cursor-default"
+                    className="inline-flex items-center px-3.5 py-1.5 text-sm font-medium rounded-full bg-retro-paper dark:bg-retro-gray/20 text-retro-black dark:text-white/90 border border-retro-black/5 dark:border-retro-gray/30 hover:border-retro-orange/40 hover:bg-retro-orange/5 dark:hover:bg-retro-orange/10 transition-all duration-200 cursor-default"
                   >
                     {item.name}
                   </motion.span>

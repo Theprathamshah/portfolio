@@ -31,7 +31,7 @@ export const Hero = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-5xl md:text-6xl lg:text-7xl font-bold text-retro-black dark:text-retro-cream mb-6 leading-tight"
+        className="text-5xl md:text-6xl lg:text-7xl font-bold text-retro-black dark:text-white mb-6 leading-tight"
       >
         Hi, I'm{' '}
         <span className="relative inline-block">
@@ -66,7 +66,7 @@ export const Hero = () => {
           I've focused on building the core logic behind distributed systems, ensuring they are both scalable and easy to maintain.
         </p>
         <p>
-          I'm a firm believer that great software starts with solving the right problems. Whether I'm working with <span className="font-semibold text-retro-black dark:text-retro-cream">Java</span>, <span className="font-semibold text-retro-black dark:text-retro-cream">Node.js</span>, or <span className="font-semibold text-retro-black dark:text-retro-cream">AWS</span>, my goal is always to slash latency and optimize performance for high-growth <span className="font-semibold text-retro-black dark:text-retro-cream">e-commerce</span> and <span className="font-semibold text-retro-black dark:text-retro-cream">SaaS</span> platforms.
+          I'm a firm believer that great software starts with solving the right problems. Whether I'm working with <span className="font-semibold text-retro-black dark:text-white">Java</span>, <span className="font-semibold text-retro-black dark:text-white">Node.js</span>, or <span className="font-semibold text-retro-black dark:text-white">AWS</span>, my goal is always to slash latency and optimize performance for high-growth <span className="font-semibold text-retro-black dark:text-white">e-commerce</span> and <span className="font-semibold text-retro-black dark:text-white">SaaS</span> platforms.
         </p>
       </motion.div>
 
