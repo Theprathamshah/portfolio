@@ -276,7 +276,7 @@ const ChessCard = ({ profile }: { profile: typeof profiles[0] }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.1 }}
-      className="retro-card retro-card-hover p-5 group block"
+      className="retro-card p-5 group block"
     >
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">

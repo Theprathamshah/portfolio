@@ -42,7 +42,7 @@ export const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="retro-card p-6 md:p-8"
+          className="retro-card p-6 md:p-8 retro-card-hover"
         >
           <h3 className="text-xl font-bold text-retro-black dark:text-white mb-4">
             Get in Touch
@@ -83,7 +83,7 @@ export const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="retro-card p-6 md:p-8"
+          className="retro-card p-6 md:p-8 retro-card-hover"
         >
           <h3 className="text-xl font-bold text-retro-black dark:text-white mb-4">
             Social Links
