@@ -32,7 +32,7 @@ export const TechStack = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.1 }}
-        className="text-lg text-retro-gray dark:text-retro-paper/60 mb-12"
+        className="text-lg text-retro-gray dark:text-white/70 mb-12"
       >
         Tools I use to break (and fix) things.
       </motion.p>
@@ -62,7 +62,7 @@ export const TechStack = () => {
               </div>
               
               {category.description && (
-                <p className="text-sm text-retro-gray dark:text-retro-paper/70 mb-6 leading-relaxed">
+                <p className="text-sm text-retro-gray dark:text-white/70 mb-6 leading-relaxed">
                   {category.description}
                 </p>
               )}
@@ -97,7 +97,7 @@ export const TechStack = () => {
         <motion.a
           href="#achievements"
           whileHover={{ y: -5 }}
-          className="flex flex-col items-center gap-2 text-retro-gray dark:text-retro-paper/60 hover:text-retro-orange transition-colors"
+          className="flex flex-col items-center gap-2 text-retro-gray dark:text-white/60 hover:text-retro-orange transition-colors"
         >
           <span className="text-sm">Continue exploring</span>
           <motion.svg

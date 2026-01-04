@@ -5,6 +5,7 @@ import { Hero } from './components/sections/Hero';
 import { Experience } from './components/sections/Experience';
 import { TechStack } from './components/sections/TechStack';
 import { Profiles } from './components/sections/Profiles';
+import { Contact } from './components/sections/Contact';
 import { Footer } from './components/sections/Footer';
 
 function App() {
@@ -35,6 +36,12 @@ function App() {
           <section id="achievements" className="min-h-screen flex items-center justify-center px-4 py-20">
             <div className="max-w-4xl mx-auto w-full">
               <Profiles />
+            </div>
+          </section>
+
+          <section id="contact" className="min-h-screen flex items-center justify-center px-4 py-20">
+            <div className="max-w-4xl mx-auto w-full">
+              <Contact />
             </div>
           </section>
         </main>

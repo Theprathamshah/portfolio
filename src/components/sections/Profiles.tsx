@@ -17,7 +17,7 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-lg bg-retro-paper dark:bg-retro-gray/30">
-            <GitHubIcon className="w-6 h-6 text-retro-gray dark:text-retro-paper/70" />
+            <GitHubIcon className="w-6 h-6 text-retro-gray dark:text-white/70" />
           </div>
           <h3 className="text-2xl font-bold text-retro-black dark:text-white bg-gradient-to-r from-retro-black to-retro-gray dark:from-white dark:to-white/80 bg-clip-text text-transparent">
             GitHub Contributions
@@ -36,18 +36,37 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
 
 
       <div className="mb-6 p-4 bg-retro-paper dark:bg-retro-gray/20 rounded-lg border border-retro-black/5 dark:border-white/5">
-        <div className="w-full overflow-x-auto bg-black rounded-lg p-4">
-          <img
-            src={`https://github-contributions-api.jogruber.de/v4/${profile.username}?no-total=true&no-legend=true&format=svg&theme=github-dark`}
-            alt="GitHub Contribution Graph"
-            className="w-full h-auto"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = `https://ghchart.rshah.org/${profile.username}?colors=161b22,0e4429,006d32,26a641,39d353`;
-            }}
-          />
+        <div className="w-full overflow-x-auto bg-black rounded-lg p-4 min-h-[150px] flex items-center justify-center">
+          {loading ? (
+            <div className="flex flex-col items-center gap-2 text-white/60">
+              <div className="w-8 h-8 border-2 border-white/20 border-t-white/60 rounded-full animate-spin"></div>
+              <p className="text-sm">Loading contribution graph...</p>
+            </div>
+          ) : error ? (
+            <div className="flex flex-col items-center gap-2 text-white/60">
+              <p className="text-sm">Unable to load contribution graph</p>
+              <a 
+                href={profile.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-retro-orange hover:underline text-xs"
+              >
+                View on GitHub →
+              </a>
+            </div>
+          ) : (
+            <img
+              src={`https://github-contributions-api.jogruber.de/v4/${profile.username}?no-total=true&no-legend=true&format=svg&theme=github-dark`}
+              alt="GitHub Contribution Graph"
+              className="w-full h-auto"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = `https://ghchart.rshah.org/${profile.username}?colors=161b22,0e4429,006d32,26a641,39d353`;
+              }}
+            />
+          )}
         </div>
-        <p className="text-sm text-retro-gray dark:text-retro-paper/60 mt-3 text-center">
-          {loading ? 'Loading...' : error ? 'Unable to load contributions' : 'Contributions in the last year'}
+        <p className="text-sm text-retro-gray dark:text-white/60 mt-3 text-center">
+          Contributions in the last year
         </p>
       </div>
 
@@ -62,7 +81,7 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
           <div className="text-2xl font-bold text-retro-black dark:text-white mb-1">
             {loading ? '...' : error ? '—' : repos}
           </div>
-          <div className="text-xs text-retro-gray dark:text-retro-paper/60">Repositories</div>
+          <div className="text-xs text-retro-gray dark:text-white/60">Repositories</div>
         </motion.div>
         
         <motion.div
@@ -159,7 +178,7 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-lg bg-retro-paper dark:bg-retro-gray/30">
-            <LeetCodeIcon className="w-6 h-6 text-retro-gray dark:text-retro-paper/70" />
+            <LeetCodeIcon className="w-6 h-6 text-retro-gray dark:text-white/70" />
           </div>
           <h3 className="text-2xl font-bold text-retro-black dark:text-white bg-gradient-to-r from-retro-black to-retro-gray dark:from-white dark:to-white/80 bg-clip-text text-transparent">
             LeetCode Statistics
@@ -176,23 +195,6 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
         </motion.a>
       </div>
 
-      <div className="mb-6 p-4 bg-retro-paper dark:bg-retro-gray/20 rounded-lg border border-retro-black/5 dark:border-white/5">
-        <div className="w-full overflow-x-auto bg-black rounded-lg p-4">
-          <img
-            src={`https://leetcard.jacoblin.cool/${profile.username}?theme=dark&font=baloo&ext=activity&hide_border=true&animation=false`}
-            alt="LeetCode Contribution Graph"
-            className="w-full h-auto rounded"
-            style={{ imageRendering: 'auto' }}
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = `https://leetcode-stats.vercel.app/api?username=${profile.username}&theme=dark`;
-            }}
-          />
-        </div>
-        <p className="text-sm text-retro-gray dark:text-retro-paper/60 mt-3 text-center">
-          {loading ? 'Loading...' : error ? 'Unable to load contributions' : 'Submission activity in the last year'}
-        </p>
-      </div>
-
 
       <div className="grid grid-cols-2 gap-4">
         <motion.div
@@ -205,7 +207,7 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
           <div className="text-2xl font-bold text-retro-black dark:text-white mb-1">
             {loading ? '...' : error ? '—' : totalSolved?.toLocaleString() ?? '—'}
           </div>
-          <div className="text-xs text-retro-gray dark:text-retro-paper/60">Problems Solved</div>
+          <div className="text-xs text-retro-gray dark:text-white/60">Problems Solved</div>
         </motion.div>
         
         <motion.div
@@ -288,8 +290,8 @@ const ChessCard = ({ profile }: { profile: typeof profiles[0] }) => {
         </span>
       </div>
 
-      <p className="text-sm text-retro-gray dark:text-retro-paper/70 mb-1">@{profile.username}</p>
-      <p className="text-sm text-retro-gray dark:text-retro-paper/70">{loading ? 'Loading chess stats...' : error ? profile.description : `Best blitz ${data?.chess_blitz?.best?.rating ?? '—'}`}</p>
+            <p className="text-sm text-retro-gray dark:text-white/70 mb-1">@{profile.username}</p>
+            <p className="text-sm text-retro-gray dark:text-white/70">{loading ? 'Loading chess stats...' : error ? profile.description : `Best blitz ${data?.chess_blitz?.best?.rating ?? '—'}`}</p>
 
       <div className="flex gap-6 mt-4 pt-4 border-t border-retro-black/5 dark:border-white/5">
         <div>
@@ -347,7 +349,7 @@ export const Profiles = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.1 }}
-        className="text-lg text-retro-gray dark:text-retro-paper/60 mb-12"
+        className="text-lg text-retro-gray dark:text-white/70 mb-12"
       >
         A few things I'm proud of.
       </motion.p>

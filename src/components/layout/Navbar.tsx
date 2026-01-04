@@ -1,25 +1,27 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@/context/ThemeContext';
-import { SunIcon, MoonIcon } from '../ui/Icons';
+import { SunIcon, MoonIcon, MenuIcon, CloseIcon } from '../ui/Icons';
 
 const navItems = [
   { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },
   { label: 'Tech Stack', href: '#tech' },
   { label: 'Achievements', href: '#achievements' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
-      const sections: string[] = ['about', 'experience', 'tech', 'achievements'];
+      const sections: string[] = ['about', 'experience', 'tech', 'achievements', 'contact'];
       const scrollPosition = window.scrollY + 200;
       
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -63,6 +65,7 @@ export const Navbar = () => {
         </motion.a>
 
         <div className="flex items-center gap-6">
+          {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center gap-2">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.replace('#', '');
@@ -70,6 +73,7 @@ export const Navbar = () => {
                 <li key={item.label}>
                   <a
                     href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
                     className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                       isActive
                         ? 'text-retro-orange bg-retro-orange/10 dark:bg-retro-orange/20 dark:text-retro-orange'
@@ -90,18 +94,67 @@ export const Navbar = () => {
             })}
           </ul>
 
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg text-retro-gray dark:text-retro-paper/70 hover:text-retro-orange hover:bg-retro-paper dark:hover:bg-retro-gray/30 transition-all"
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-          >
-            {theme === 'light' ? (
-              <MoonIcon className="w-5 h-5" />
-            ) : (
-              <SunIcon className="w-5 h-5" />
-            )}
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg text-retro-gray dark:text-white/70 hover:text-retro-orange hover:bg-retro-paper dark:hover:bg-retro-gray/30 transition-all"
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            >
+              {theme === 'light' ? (
+                <MoonIcon className="w-5 h-5" />
+              ) : (
+                <SunIcon className="w-5 h-5" />
+              )}
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 rounded-lg text-retro-gray dark:text-white/70 hover:text-retro-orange hover:bg-retro-paper dark:hover:bg-retro-gray/30 transition-all"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <CloseIcon className="w-6 h-6" />
+              ) : (
+                <MenuIcon className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden absolute top-full left-0 right-0 mt-2 mx-4 bg-retro-paper dark:bg-retro-dark border border-retro-black/10 dark:border-retro-gray/20 rounded-lg shadow-xl overflow-hidden"
+            >
+              <ul className="flex flex-col py-2">
+                {navItems.map((item) => {
+                  const isActive = activeSection === item.href.replace('#', '');
+                  return (
+                    <li key={item.label}>
+                      <a
+                        href={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={`block px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                          isActive
+                            ? 'text-retro-orange bg-retro-orange/10 dark:bg-retro-orange/20'
+                            : 'text-retro-gray dark:text-white/70 hover:text-retro-orange hover:bg-retro-offWhite dark:hover:bg-retro-gray/20'
+                        }`}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.nav>
   );

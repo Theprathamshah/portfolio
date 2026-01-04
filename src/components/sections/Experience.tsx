@@ -25,7 +25,7 @@ export const Experience = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.1 }}
-        className="text-lg text-retro-gray dark:text-retro-paper/60 mb-12"
+        className="text-lg text-retro-gray dark:text-white/70 mb-12"
       >
         My career path and the experiences that shaped me.
       </motion.p>
@@ -58,7 +58,7 @@ export const Experience = () => {
                     </motion.span>
                   )}
                 </div>
-                <p className="text-lg font-medium text-retro-gray dark:text-retro-paper/80">
+                <p className="text-lg font-medium text-retro-gray dark:text-white/80">
                   {exp.role}
                 </p>
               </div>
@@ -82,7 +82,7 @@ export const Experience = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 + i * 0.05 }}
-                  className="flex items-start gap-3 text-base text-retro-gray dark:text-retro-paper/80 leading-relaxed"
+                  className="flex items-start gap-3 text-base text-retro-gray dark:text-white/80 leading-relaxed"
                 >
                   <span className="text-retro-orange mt-1.5 flex-shrink-0 font-bold">▸</span>
                   <span>{achievement}</span>
@@ -116,7 +116,7 @@ export const Experience = () => {
         <motion.a
           href="#tech"
           whileHover={{ y: -5 }}
-          className="flex flex-col items-center gap-2 text-retro-gray dark:text-retro-paper/60 hover:text-retro-orange transition-colors"
+          className="flex flex-col items-center gap-2 text-retro-gray dark:text-white/60 hover:text-retro-orange transition-colors"
         >
           <span className="text-sm">Continue exploring</span>
           <motion.svg

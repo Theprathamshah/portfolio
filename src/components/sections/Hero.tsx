@@ -50,7 +50,7 @@ export const Hero = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className="text-2xl md:text-3xl lg:text-4xl font-medium text-retro-gray dark:text-retro-paper/70 mb-10"
+        className="text-2xl md:text-3xl lg:text-4xl font-medium text-retro-gray dark:text-white/80 mb-10"
       >
         Building scalable systems & crafting elegant solutions
       </motion.h2>
@@ -59,7 +59,7 @@ export const Hero = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="space-y-5 text-lg md:text-xl text-retro-gray dark:text-retro-paper/80 leading-relaxed max-w-3xl"
+        className="space-y-5 text-lg md:text-xl text-retro-gray dark:text-white/80 leading-relaxed max-w-3xl"
       >
         <p>
           I'm a backend engineer who loves deconstructing complex problems into clean, efficient code. Over the last <span className="text-retro-orange font-semibold">2+ years</span>,
@@ -74,30 +74,42 @@ export const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
-        className="mt-12"
+        className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6"
       >
-        <p className="text-sm font-medium text-retro-gray dark:text-retro-paper/60 mb-4 uppercase tracking-wide">
-          Connect with me
-        </p>
-        <div className="flex items-center gap-3">
-          {socialLinks.map((link) => {
-            const Icon = iconMap[link.icon as keyof typeof iconMap];
-            return (
-              <motion.a
-                key={link.name}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -3, scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group p-3.5 rounded-xl bg-retro-paper dark:bg-retro-gray/30 text-retro-gray dark:text-retro-paper/70 hover:bg-retro-orange/10 hover:border-retro-orange/30 border border-transparent transition-all duration-200 shadow-sm hover:shadow-md"
-                aria-label={link.name}
-              >
-                <Icon className="w-5 h-5 transition-colors duration-200 text-current group-hover:text-retro-orange" />
-              </motion.a>
-            );
-          })}
+        <div className="flex-1">
+          <p className="text-sm font-medium text-retro-gray dark:text-white/60 mb-4 uppercase tracking-wide">
+            Connect with me
+          </p>
+          <div className="flex items-center gap-3">
+            {socialLinks.map((link) => {
+              const Icon = iconMap[link.icon as keyof typeof iconMap];
+              return (
+                <motion.a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -3, scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group p-3.5 rounded-xl bg-retro-paper dark:bg-retro-gray/30 text-retro-gray dark:text-white/70 hover:bg-retro-orange/10 hover:border-retro-orange/30 border border-transparent transition-all duration-200 shadow-sm hover:shadow-md"
+                  aria-label={link.name}
+                >
+                  <Icon className="w-5 h-5 transition-colors duration-200 text-current group-hover:text-retro-orange" />
+                </motion.a>
+              );
+            })}
+          </div>
         </div>
+        <motion.a
+          href="https://drive.google.com/file/d/1ZbL3QK9drdu0Y1ahclTA1An-tB_QHxsn/view"
+          download
+          target='_blank'
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="px-6 py-3 rounded-xl bg-retro-orange text-white font-medium hover:bg-retro-rust transition-colors duration-200 shadow-md hover:shadow-lg"
+        >
+          Download Resume
+        </motion.a>
       </motion.div>
 
       <motion.div
@@ -109,7 +121,7 @@ export const Hero = () => {
         <motion.a
           href="#experience"
           whileHover={{ y: -5 }}
-          className="flex flex-col items-center gap-2 text-retro-gray dark:text-retro-paper/60 hover:text-retro-orange transition-colors"
+          className="flex flex-col items-center gap-2 text-retro-gray dark:text-white/60 hover:text-retro-orange transition-colors"
         >
           <span className="text-sm">Scroll to explore</span>
           <motion.svg
