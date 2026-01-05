@@ -52,7 +52,7 @@ export const Contact = () => {
           </p>
           <div className="space-y-3">
             <motion.a
-              href="mailto:prathamshah2911@gmail.com"
+              href="mailto:itspratham2911@gmail.com"
               whileHover={{ scale: 1.02, x: 5 }}
               className="flex items-center gap-3 text-retro-gray dark:text-white/70 hover:text-retro-orange transition-colors group"
             >
@@ -61,7 +61,7 @@ export const Contact = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <span className="font-medium">prathamshah2911@gmail.com</span>
+              <span className="font-medium">itspratham2911@gmail.com</span>
             </motion.a>
             <motion.a
               href="https://www.linkedin.com/in/pratham-shah-7924871b9/"
