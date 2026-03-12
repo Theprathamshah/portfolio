@@ -9,7 +9,7 @@ export default {
     extend: {
       colors: {
         retro: {
-          // Modern dark theme (inspired by adittya.site)
+          // Modern dark theme
           black: '#0a0a0a',        // Very dark background
           dark: '#1a1a1a',         // Card backgrounds
           darker: '#141414',       // Slightly lighter than black

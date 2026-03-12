@@ -20,10 +20,10 @@ export const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
+
       const sections: string[] = ['about', 'experience', 'tech', 'achievements', 'contact'];
       const scrollPosition = window.scrollY + 200;
-      
+
       for (let i = sections.length - 1; i >= 0; i--) {
         const sectionId = sections[i];
         if (!sectionId) continue;
@@ -34,7 +34,7 @@ export const Navbar = () => {
         }
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
@@ -48,8 +48,8 @@ export const Navbar = () => {
       className={`
         fixed top-0 left-0 right-0 z-50 px-4 py-3
         transition-all duration-300
-        ${isScrolled 
-          ? 'bg-retro-cream/90 dark:bg-retro-black/90 backdrop-blur-md border-b border-retro-black/5 dark:border-retro-gray/20' 
+        ${isScrolled
+          ? 'bg-retro-cream/90 dark:bg-retro-black/90 backdrop-blur-md border-b border-retro-black/5 dark:border-retro-gray/20'
           : 'bg-transparent'
         }
       `}
@@ -74,11 +74,10 @@ export const Navbar = () => {
                   <a
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                      isActive
+                    className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${isActive
                         ? 'text-retro-orange bg-retro-orange/10 dark:bg-retro-orange/20 dark:text-retro-orange'
                         : 'text-retro-gray dark:text-white/70 hover:text-retro-orange hover:bg-retro-offWhite dark:hover:bg-retro-gray/20'
-                    }`}
+                      }`}
                   >
                     {item.label}
                     {isActive && (
@@ -126,11 +125,12 @@ export const Navbar = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
+              key="mobile-menu"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden absolute top-full left-0 right-0 mt-2 mx-4 bg-retro-paper dark:bg-retro-dark border border-retro-black/10 dark:border-retro-gray/20 rounded-lg shadow-xl overflow-hidden"
+              className="md:hidden absolute top-[calc(100%+0.5rem)] left-4 right-4 bg-retro-paper dark:bg-retro-dark border border-retro-black/10 dark:border-retro-gray/20 rounded-lg shadow-xl overflow-hidden"
             >
               <ul className="flex flex-col py-2">
                 {navItems.map((item) => {
@@ -140,11 +140,10 @@ export const Navbar = () => {
                       <a
                         href={item.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`block px-4 py-3 text-sm font-medium transition-all duration-200 ${
-                          isActive
+                        className={`block px-4 py-3 text-sm font-medium transition-all duration-200 ${isActive
                             ? 'text-retro-orange bg-retro-orange/10 dark:bg-retro-orange/20'
                             : 'text-retro-gray dark:text-white/70 hover:text-retro-orange hover:bg-retro-offWhite dark:hover:bg-retro-gray/20'
-                        }`}
+                          }`}
                       >
                         {item.label}
                       </a>
