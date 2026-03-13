@@ -1,5 +1,9 @@
 import type { Experience, ProfileCard, SocialLink, TechCategory } from '@/types';
 
+export const resumeUrl: string =
+  import.meta.env.VITE_RESUME_URL ||
+  'https://drive.google.com/file/d/128eI4oye7YAdSs1h3bxa_E2N6y2epdE0/view?usp=sharing';
+
 export const techStack: TechCategory[] = [
   {
     title: 'Systems & Core',

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { GitHubIcon, LinkedInIcon, LeetCodeIcon } from '../ui/Icons';
-import { socialLinks } from '@/data/portfolio';
+import { socialLinks, resumeUrl } from '@/data/portfolio';
 
 const iconMap = {
   github: GitHubIcon,
@@ -27,7 +27,7 @@ export const Hero = () => {
         </span>
       </motion.div>
 
-      <motion.h1 
+      <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -45,7 +45,7 @@ export const Hero = () => {
           />
         </span>
       </motion.h1>
-      
+
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -101,7 +101,7 @@ export const Hero = () => {
           </div>
         </div>
         <motion.a
-          href="https://drive.google.com/file/d/1ZbL3QK9drdu0Y1ahclTA1An-tB_QHxsn/view"
+          href={resumeUrl}
           download
           target='_blank'
           whileHover={{ scale: 1.05 }}
