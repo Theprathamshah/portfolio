@@ -87,31 +87,6 @@ export const TechStack = () => {
         })}
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.5 }}
-        className="mt-16 flex justify-center"
-      >
-        <motion.a
-          href="#achievements"
-          whileHover={{ y: -5 }}
-          className="flex flex-col items-center gap-2 text-retro-gray dark:text-white/60 hover:text-retro-orange transition-colors"
-        >
-          <span className="text-sm">Continue exploring</span>
-          <motion.svg
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </motion.svg>
-        </motion.a>
-      </motion.div>
     </motion.div>
   );
 };

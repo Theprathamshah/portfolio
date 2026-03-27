@@ -103,4 +103,54 @@
   html.dark .section-divider {
     @apply via-white/5;
   }
+
+  /* Bento Grid Layouts */
+  .bento-grid {
+    @apply grid grid-cols-1 md:grid-cols-4 gap-4;
+    grid-auto-rows: minmax(180px, auto);
+  }
+
+  .bento-span-1 { @apply md:col-span-1 md:row-span-1; }
+  .bento-span-2 { @apply md:col-span-2 md:row-span-2; }
+  .bento-wide { @apply md:col-span-2 md:row-span-1; }
+  .bento-tall { @apply md:col-span-1 md:row-span-2; }
+  .bento-full { @apply md:col-span-full; }
+
+  /* Custom Utilities */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.05) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  html.dark .bg-grid {
+    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 110, 64, 0.3);
+  }
+
+  html.dark .text-glow {
+    text-shadow: 0 0 25px rgba(255, 110, 64, 0.4);
+  }
 }

@@ -1,8 +1,48 @@
-import type { Experience, ProfileCard, SocialLink, TechCategory } from '@/types';
+import type { Experience, ProfileCard, Project, SocialLink, TechCategory } from '@/types';
 
 export const resumeUrl: string =
   import.meta.env.VITE_RESUME_URL ||
   'https://drive.google.com/file/d/128eI4oye7YAdSs1h3bxa_E2N6y2epdE0/view?usp=sharing';
+
+export const featuredProjects: Project[] = [
+  {
+    title: 'Event-Driven ETL Orchestrator',
+    description: 'Scalable system processing 50k+ product updates daily using AWS Step Functions and Lambda.',
+    longDescription: 'Developed a serverless, event-driven backend to orchestrate complex ETL workflows for a major UK retailer. Leveraged AWS Kinesis and EventBridge for real-time data streaming and synchronization.',
+    tech: ['Java', 'Spring Boot', 'AWS Lambda', 'Step Functions', 'Kinesis'],
+    impact: 'Improved data consistency and processed 50k+ updates daily.',
+    image: '/projects/etl.png',
+    featured: true,
+  },
+  {
+    title: 'FreeChess Engine',
+    description: 'Full-featured chess platform with real-time AI analysis and TTS move explanations.',
+    longDescription: 'Engineered a comprehensive chess application featuring move validation, game analysis, and a custom move-explanation engine powered by Text-to-Speech. Integrated complex game logic with a modern, responsive UI.',
+    tech: ['React', 'TypeScript', 'Web Speech API', 'Stockfish', 'Framer Motion'],
+    impact: 'Built a professional-grade chess suite with premium analysis features.',
+    link: 'https://freechess-kappa.vercel.app/',
+    github: 'https://github.com/Theprathamshah/Freechess',
+    image: '/projects/freechess.png',
+    featured: true,
+  },
+  {
+    title: 'Distributed Stock Migration',
+    description: 'Migrated 25 million records with zero downtime using Step Functions.',
+    longDescription: 'Engineered a resilient migration strategy to move 25 million stock records from legacy systems to a microservices architecture, ensuring data integrity and 99.9% reliability.',
+    tech: ['Java', 'AWS Step Functions', 'S3', 'Microservices', 'SQS'],
+    impact: 'Zero-downtime migration of 25M records.',
+    image: '/projects/migration.png',
+  },
+  {
+    title: 'BigInt C++ Library',
+    description: 'High-performance library for arbitrary-precision arithmetic on numbers exceeding 10^18.',
+    longDescription: 'Developed a robust C++ library for handling extremely large mathematical operations using string-based storage. Implemented optimized algorithms for addition, subtraction, multiplication, division, and modulo.',
+    tech: ['C++', 'Algorithms', 'Data Structures', 'String Manipulation'],
+    impact: 'Enabled precise math operations with overflow-safe execution.',
+    github: 'https://github.com/Theprathamshah/BigInt',
+    image: '/projects/bigint.png',
+  }
+];
 
 export const techStack: TechCategory[] = [
   {

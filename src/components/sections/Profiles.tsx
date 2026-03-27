@@ -45,7 +45,7 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
           ) : error ? (
             <div className="flex flex-col items-center gap-2 text-white/60">
               <p className="text-sm">Unable to load contribution graph</p>
-              <a 
+              <a
                 href={profile.link}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -83,7 +83,7 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
           </div>
           <div className="text-xs text-retro-gray dark:text-white/60">Repositories</div>
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -96,7 +96,7 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
           </div>
           <div className="text-xs text-retro-gray dark:text-retro-paper/60">Followers</div>
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -209,7 +209,7 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
           </div>
           <div className="text-xs text-retro-gray dark:text-white/60">Problems Solved</div>
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -290,8 +290,8 @@ const ChessCard = ({ profile }: { profile: typeof profiles[0] }) => {
         </span>
       </div>
 
-            <p className="text-sm text-retro-gray dark:text-white/70 mb-1">@{profile.username}</p>
-            <p className="text-sm text-retro-gray dark:text-white/70">{loading ? 'Loading chess stats...' : error ? profile.description : `Best blitz ${data?.chess_blitz?.best?.rating ?? '—'}`}</p>
+      <p className="text-sm text-retro-gray dark:text-white/70 mb-1">@{profile.username}</p>
+      <p className="text-sm text-retro-gray dark:text-white/70">{loading ? 'Loading chess stats...' : error ? profile.description : `Best blitz ${data?.chess_blitz?.best?.rating ?? '—'}`}</p>
 
       <div className="flex gap-6 mt-4 pt-4 border-t border-retro-black/5 dark:border-white/5">
         <div>
@@ -333,81 +333,90 @@ export const Profiles = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.8 }}
-      className="w-full"
+      className="w-full max-w-6xl mx-auto"
     >
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="text-3xl md:text-4xl font-semibold text-retro-black dark:text-white mb-4"
-      >
-        Achievements
-      </motion.h2>
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.1 }}
-        className="text-lg text-retro-gray dark:text-white/70 mb-12"
-      >
-        A few things I'm proud of.
-      </motion.p>
-
-      <div className="space-y-8 mb-12">
-        {githubProfile && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <GitHubCard profile={githubProfile} />
-          </motion.div>
-        )}
-        {leetcodeProfile && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <LeetCodeCard profile={leetcodeProfile} />
-          </motion.div>
-        )}
-        {chessProfile && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <ChessCard profile={chessProfile} />
-          </motion.div>
-        )}
+      <div className="mb-12">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="inline-block px-4 py-1.5 rounded-full bg-retro-paper dark:bg-retro-gray/30 text-sm font-medium text-retro-black dark:text-white/80 border border-retro-black/10 dark:border-white/10 mb-4 uppercase tracking-widest"
+        >
+          Track Record
+        </motion.div>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-5xl font-bold text-retro-black dark:text-white mb-4"
+        >
+          Technical <span className="text-retro-orange">Achievements</span>
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="text-lg text-retro-gray dark:text-white/70"
+        >
+          Validation of skills through competitive programming, contributions, and strategy.
+        </motion.p>
       </div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        className="retro-card p-6"
-      >
-          <div className="mb-2">
-            <h3 className="font-semibold text-retro-black dark:text-white text-lg">Open-source Contributions</h3>
-            <p className="text-sm text-retro-gray dark:text-retro-paper/70 mt-1">Selected highlights: community work.</p>
+
+      <div className="bento-grid">
+        {/* GitHub Contribution - Main Piece */}
+        {githubProfile && (
+          <div className="md:col-span-2 md:row-span-2">
+            <GitHubCard profile={githubProfile} />
           </div>
+        )}
 
-          <ul className="mt-3 space-y-2 text-retro-gray dark:text-retro-paper/70 list-disc list-inside">
-            <li>
-              Contributed to <a href="https://learngitbranching.js.org/" target="_blank" rel="noreferrer" className="text-retro-orange hover:underline">learngitbranching</a> — an interactive Git learning website (UX/content improvements and bug fixes).
-            </li>
-            <li>
-              Added a Chess ELO estimation feature to <a href="https://chesskit.org/" target="_blank" rel="noreferrer" className="text-retro-orange hover:underline">chesskit</a> — improving analytics for community players.
-            </li>
-          </ul>
-      </motion.div>
+        {/* LeetCode - Wide Piece */}
+        {leetcodeProfile && (
+          <div className="md:col-span-2 md:row-span-1">
+            <LeetCodeCard profile={leetcodeProfile} />
+          </div>
+        )}
 
+        {/* Chess - Now Wide instead of Tall for better fit */}
+        {chessProfile && (
+          <div className="md:col-span-2 md:row-span-1">
+            <ChessCard profile={chessProfile} />
+          </div>
+        )}
+
+        {/* Open Source - Full width bottom piece */}
+        <motion.div
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.6, delay: 0.5 }}
+           className="md:col-span-4 retro-card p-8 flex flex-col justify-center border-retro-orange/20"
+        >
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="max-w-xl">
+              <h3 className="font-bold text-retro-black dark:text-white text-2xl flex items-center gap-2 mb-2">
+                <span className="text-retro-orange text-3xl">★</span> Open-source Contributions
+              </h3>
+              <p className="text-retro-gray dark:text-white/60">
+                Active member of the developer community, contributing to tools that help thousands of developers worldwide.
+              </p>
+            </div>
+
+            <ul className="grid sm:grid-cols-2 gap-4 flex-1">
+              <li className="p-4 rounded-xl bg-retro-paper dark:bg-retro-gray/20 border border-retro-black/5 dark:border-white/5">
+                <a href="https://learngitbranching.js.org/" target="_blank" rel="noreferrer" className="text-retro-orange font-bold hover:underline block mb-1">Learn Git Branching</a>
+                <p className="text-xs text-retro-gray dark:text-white/50">UX/UI enhancements and core bug fixes for the interactive Git playground.</p>
+              </li>
+              <li className="p-4 rounded-xl bg-retro-paper dark:bg-retro-gray/20 border border-retro-black/5 dark:border-white/5">
+                <a href="https://chesskit.org/" target="_blank" rel="noreferrer" className="text-retro-orange font-bold hover:underline block mb-1">ChessKit</a>
+                <p className="text-xs text-retro-gray dark:text-white/50">Implemented advanced ELO estimation logic for player analytics.</p>
+              </li>
+            </ul>
+          </div>
+        </motion.div>
+      </div>
     </motion.div>
   );
 };

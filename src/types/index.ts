@@ -35,3 +35,15 @@ export interface SocialLink {
   url: string;
   icon: string;
 }
+
+export interface Project {
+  title: string;
+  description: string;
+  longDescription: string;
+  tech: string[];
+  impact?: string;
+  link?: string;
+  github?: string;
+  image?: string;
+  featured?: boolean;
+}

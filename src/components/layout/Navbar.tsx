@@ -4,7 +4,7 @@ import { useTheme } from '@/context/ThemeContext';
 import { SunIcon, MoonIcon, MenuIcon, CloseIcon } from '../ui/Icons';
 
 const navItems = [
-  { label: 'About', href: '#about' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
   { label: 'Tech Stack', href: '#tech' },
   { label: 'Achievements', href: '#achievements' },
@@ -21,7 +21,7 @@ export const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      const sections: string[] = ['about', 'experience', 'tech', 'achievements', 'contact'];
+      const sections: string[] = ['about', 'projects', 'experience', 'tech', 'achievements', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
