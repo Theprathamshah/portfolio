@@ -40,17 +40,35 @@ export const Hero = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-5xl md:text-6xl lg:text-7xl font-bold text-retro-black dark:text-white mb-6 leading-tight"
+        className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-retro-black dark:text-white mb-4 leading-tight flex flex-wrap items-center gap-x-4"
       >
-        I Build <span className="text-retro-orange">Scalable</span> <br />
-        Systems & Elegant Code
+        <span>Hi, I'm</span>
+        <span className="text-retro-orange text-glow relative inline-block">
+          Pratham Shah
+        </span>
+        <motion.span
+          animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1 }}
+          className="inline-block origin-[70%_70%]"
+        >
+          👋
+        </motion.span>
       </motion.h1>
+
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="text-3xl md:text-4xl lg:text-5xl font-bold text-retro-gray dark:text-white/80 mb-6 leading-tight"
+      >
+        I Build <span className="text-retro-orange">Scalable</span> Systems & Elegant Code
+      </motion.h2>
 
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="text-2xl md:text-3xl font-medium text-retro-gray dark:text-white/80 mb-10"
+        transition={{ duration: 0.8, delay: 0.35 }}
+        className="text-xl md:text-2xl font-medium text-retro-gray/80 dark:text-white/60 mb-10"
       >
         Focused on high-performance backend architectures.
       </motion.p>
@@ -62,7 +80,7 @@ export const Hero = () => {
         className="space-y-5 text-lg md:text-xl text-retro-gray dark:text-white/80 leading-relaxed max-w-3xl"
       >
         <p>
-          I'm <span className="text-retro-black dark:text-white font-bold">Pratham Shah</span>, a backend-heavy full-stack engineer who loves deconstructing complex problems into clean, efficient code.
+          I'm a <span className="text-retro-black dark:text-white font-bold">backend-heavy full-stack engineer</span> who loves deconstructing complex problems into clean, highly efficient code.
         </p>
         <p>
           Currently architecting <span className="text-retro-orange font-semibold">distributed systems</span> and high-volume data pipelines, 
