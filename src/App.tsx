@@ -63,33 +63,28 @@ function App() {
           </section>
 
           {/* Conversion: Contact Section */}
-          <section id="contact" className="h-screen w-full snap-start flex flex-col items-center justify-center px-4 bg-retro-paper/20 dark:bg-retro-gray/10 relative shrink-0">
-            <div className="max-w-4xl mx-auto w-full">
+          <section id="contact" className="h-screen w-full snap-start flex flex-col items-center justify-between px-4 py-8 bg-retro-paper/20 dark:bg-retro-gray/10 relative shrink-0">
+            <div className="max-w-4xl mx-auto w-full overflow-y-auto max-h-[65vh] scrollbar-hide py-4 px-2">
               <Contact />
             </div>
-          </section>
 
-          {/* Footer as its own snap section */}
-          <section className="h-screen w-full snap-start flex flex-col items-center justify-between py-20 relative shrink-0">
-            <div className="flex-1" /> {/* Spacer */}
-            
-            <div className="flex flex-col items-center gap-8">
+            <div className="w-full flex flex-col items-center gap-4 mt-auto">
               <motion.button
                 onClick={() => document.getElementById('main-content')?.scrollTo({ top: 0, behavior: 'smooth' })}
                 whileHover={{ y: -5 }}
-                className="flex flex-col items-center gap-3 text-retro-gray dark:text-white/40 hover:text-retro-orange transition-colors group"
+                className="flex flex-col items-center gap-2 text-retro-gray dark:text-white/40 hover:text-retro-orange transition-colors group"
               >
                 <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Back to top</span>
-                <div className="p-3 rounded-full border border-retro-gray/20 dark:border-white/10 group-hover:border-retro-orange/30 group-hover:bg-retro-orange/5 transition-all">
-                  <svg className="w-5 h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="p-2 rounded-full border border-retro-gray/20 dark:border-white/10 group-hover:border-retro-orange/30 group-hover:bg-retro-orange/5 transition-all">
+                  <svg className="w-4 h-4 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
                   </svg>
                 </div>
               </motion.button>
-            </div>
 
-            <div className="w-full">
-              <Footer />
+              <div className="w-full">
+                <Footer />
+              </div>
             </div>
           </section>
         </main>
