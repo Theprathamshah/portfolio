@@ -55,7 +55,7 @@ export const Navbar = () => {
       `}
       role="navigation"
     >
-      <div className="max-w-4xl mx-auto flex items-center justify-between">
+      <div className="max-w-6xl mx-auto flex items-center justify-between">
         <motion.a
           href="#about"
           whileHover={{ scale: 1.02 }}

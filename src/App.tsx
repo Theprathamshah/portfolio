@@ -44,9 +44,8 @@ function App() {
           id="main-content"
           className="relative z-10 h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth hide-scrollbar"
         >
-          {/* Hero / About Section */}
           <section id="about" className="h-screen w-full snap-start flex flex-col items-center justify-center px-4 relative shrink-0">
-            <div className="max-w-6xl mx-auto w-full">
+            <div className="max-w-7xl mx-auto w-full overflow-y-auto max-h-[85vh] scrollbar-hide py-4 px-2">
               <Hero />
             </div>
             <ScrollIndicator targetId="projects" className="absolute bottom-10" />
@@ -62,7 +61,7 @@ function App() {
 
           {/* Professional Context: Experience Section */}
           <section id="experience" className="h-screen w-full snap-start flex flex-col items-center justify-center px-4 relative shrink-0">
-            <div className="max-w-4xl mx-auto w-full overflow-y-auto max-h-[80vh] scrollbar-hide py-10 px-4">
+            <div className="max-w-6xl mx-auto w-full overflow-y-auto max-h-[80vh] scrollbar-hide py-10 px-4">
               <Experience />
             </div>
             <ScrollIndicator targetId="tech" className="absolute bottom-10" />
@@ -70,7 +69,7 @@ function App() {
 
           {/* Technical Skills: Tech Stack Section */}
           <section id="tech" className="h-screen w-full snap-start flex flex-col items-center justify-center px-4 bg-retro-paper/10 dark:bg-retro-gray/5 relative shrink-0">
-            <div className="max-w-4xl mx-auto w-full overflow-y-auto max-h-[80vh] scrollbar-hide py-10 px-4">
+            <div className="max-w-6xl mx-auto w-full overflow-y-auto max-h-[80vh] scrollbar-hide py-10 px-4">
               <TechStack />
             </div>
             <ScrollIndicator targetId="achievements" className="absolute bottom-10" />
@@ -86,7 +85,7 @@ function App() {
 
           {/* Conversion: Contact Section */}
           <section id="contact" className="h-screen w-full snap-start flex flex-col items-center justify-between px-4 py-8 bg-retro-paper/20 dark:bg-retro-gray/10 relative shrink-0">
-            <div className="max-w-4xl mx-auto w-full overflow-y-auto max-h-[78vh] scrollbar-hide py-4 px-2">
+            <div className="max-w-6xl mx-auto w-full overflow-y-auto max-h-[78vh] scrollbar-hide py-4 px-2">
               <Contact />
             </div>
 
