@@ -42,7 +42,7 @@ function App() {
         
         <main 
           id="main-content"
-          className="h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth hide-scrollbar"
+          className="relative z-10 h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth hide-scrollbar"
         >
           {/* Hero / About Section */}
           <section id="about" className="h-screen w-full snap-start flex flex-col items-center justify-center px-4 relative shrink-0">
