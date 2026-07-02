@@ -23,7 +23,7 @@ export const TechStack = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-3xl md:text-4xl font-semibold text-retro-black dark:text-white mb-2"
+        className="text-3xl md:text-5xl font-extrabold text-white mb-2 leading-tight tracking-tight select-none"
       >
         Skills & Technical Arsenal
       </motion.h2>
@@ -32,9 +32,9 @@ export const TechStack = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.1 }}
-        className="text-lg text-retro-gray dark:text-white/70 mb-12"
+        className="text-lg text-white/50 mb-12 font-medium select-none"
       >
-        Tools I use to break (and fix) things.
+        Tools I use to build distributed backends at scale.
       </motion.p>
 
       <div className="grid md:grid-cols-3 gap-6">
@@ -48,21 +48,21 @@ export const TechStack = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.15 }}
-              className="retro-card p-6 md:p-7 rounded-xl hover:shadow-lg transition-all duration-300 group"
+              className="glass-card glass-card-hover p-6 md:p-7 rounded-xl group"
             >
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 mb-5 select-none">
                 {IconComponent && (
-                  <div className="p-2.5 rounded-lg bg-retro-paper dark:bg-retro-gray/30 text-retro-gray dark:text-retro-paper/70 group-hover:bg-retro-orange/10 group-hover:text-retro-orange transition-colors duration-200">
+                  <div className="p-2.5 rounded-lg bg-white/5 text-white/50 group-hover:bg-retro-orange/10 group-hover:text-retro-orange border border-white/5 transition-colors duration-200">
                     <IconComponent className="w-5 h-5" />
                   </div>
                 )}
-                <h3 className="text-xl font-bold text-retro-black dark:text-white">
+                <h3 className="text-xl font-extrabold text-white">
                   {category.title}
                 </h3>
               </div>
               
               {category.description && (
-                <p className="text-sm text-retro-gray dark:text-white/70 mb-6 leading-relaxed">
+                <p className="text-sm text-white/60 mb-6 leading-relaxed font-medium">
                   {category.description}
                 </p>
               )}
@@ -76,7 +76,7 @@ export const TechStack = () => {
                     viewport={{ once: true }}
                     transition={{ delay: categoryIndex * 0.1 + itemIndex * 0.02 }}
                     whileHover={{ scale: 1.05, y: -2 }}
-                    className="inline-flex items-center px-3.5 py-1.5 text-sm font-medium rounded-full bg-retro-paper dark:bg-retro-gray/20 text-retro-black dark:text-white/90 border border-retro-black/5 dark:border-retro-gray/30 hover:border-retro-orange/40 hover:bg-retro-orange/5 dark:hover:bg-retro-orange/10 transition-all duration-200 cursor-default"
+                    className="inline-flex items-center px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-wider rounded-full bg-white/5 text-white/70 border border-white/5 hover:border-retro-orange/30 hover:bg-white/10 transition-all duration-200 cursor-default select-none"
                   >
                     {item.name}
                   </motion.span>

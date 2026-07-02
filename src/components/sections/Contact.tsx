@@ -73,12 +73,12 @@ export const Contact = () => {
       transition={{ duration: 0.8 }}
       className="w-full max-w-6xl mx-auto"
     >
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 select-none">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="inline-block px-4 py-1.5 rounded-full bg-retro-paper dark:bg-retro-gray/30 text-sm font-medium text-retro-black dark:text-white/80 border border-retro-black/10 dark:border-white/10 mb-4"
+          className="inline-block px-4 py-1 rounded-full bg-white/5 text-[10px] font-bold text-retro-orange border border-white/10 mb-4 uppercase tracking-[0.2em]"
         >
           Contact Me
         </motion.div>
@@ -87,18 +87,18 @@ export const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-3xl md:text-5xl font-bold text-retro-black dark:text-white mb-6"
+          className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tight"
         >
-          Contact us
+          Get in Touch
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-lg text-retro-gray dark:text-white/70 max-w-2xl mx-auto"
+          className="text-lg text-white/50 max-w-2xl mx-auto font-medium"
         >
-          Ready to bring your ideas to life? I'm available for freelance projects, full-time opportunities, and collaborations.
+          Ready to scale your next infrastructure project? I'm available for engineering opportunities, consultations, and collaborations.
         </motion.p>
       </div>
 
@@ -109,19 +109,19 @@ export const Contact = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:col-span-3 retro-card p-6 md:p-8"
+          className="lg:col-span-3 glass-card p-6 md:p-8 hover:border-white/15 transition-all duration-300"
         >
-          <div className="flex items-center gap-3 mb-6 border-b border-retro-black/10 dark:border-white/10 pb-6">
-            <div className="w-10 h-10 rounded-full bg-retro-orange text-white flex items-center justify-center flex-shrink-0">
+          <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-6 select-none">
+            <div className="w-10 h-10 rounded-full bg-retro-orange/15 text-retro-orange flex items-center justify-center flex-shrink-0 border border-retro-orange/30">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
               </svg>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-retro-black dark:text-white">
+              <h3 className="text-xl font-extrabold text-white">
                 Send Me a Message
               </h3>
-              <p className="text-sm text-retro-gray dark:text-white/60">
+              <p className="text-sm text-white/50 font-medium">
                 Fill out the form and I'll get back to you within 24 hours
               </p>
             </div>
@@ -130,7 +130,7 @@ export const Contact = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label htmlFor="name" className="text-sm font-medium text-retro-black dark:text-white">
+                <label htmlFor="name" className="text-sm font-bold text-white/80">
                   Your Name *
                 </label>
                 <input
@@ -141,11 +141,11 @@ export const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Enter your name"
-                  className="w-full px-4 py-3 rounded-lg bg-transparent border border-retro-black/20 dark:border-white/20 text-retro-black dark:text-white focus:outline-none focus:border-retro-orange dark:focus:border-retro-orange transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-retro-orange focus:ring-1 focus:ring-retro-orange/30 transition-all font-medium placeholder:text-white/20"
                 />
               </div>
               <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium text-retro-black dark:text-white">
+                <label htmlFor="email" className="text-sm font-bold text-white/80">
                   Your Email *
                 </label>
                 <input
@@ -156,13 +156,13 @@ export const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="your.email@example.com"
-                  className="w-full px-4 py-3 rounded-lg bg-transparent border border-retro-black/20 dark:border-white/20 text-retro-black dark:text-white focus:outline-none focus:border-retro-orange dark:focus:border-retro-orange transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-retro-orange focus:ring-1 focus:ring-retro-orange/30 transition-all font-medium placeholder:text-white/20"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="subject" className="text-sm font-medium text-retro-black dark:text-white">
+              <label htmlFor="subject" className="text-sm font-bold text-white/80">
                 Subject *
               </label>
               <input
@@ -173,12 +173,12 @@ export const Contact = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 placeholder="What would you like to discuss?"
-                className="w-full px-4 py-3 rounded-lg bg-transparent border border-retro-black/20 dark:border-white/20 text-retro-black dark:text-white focus:outline-none focus:border-retro-orange dark:focus:border-retro-orange transition-colors"
+                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-retro-orange focus:ring-1 focus:ring-retro-orange/30 transition-all font-medium placeholder:text-white/20"
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-medium text-retro-black dark:text-white">
+              <label htmlFor="message" className="text-sm font-bold text-white/80">
                 Message *
               </label>
               <textarea
@@ -188,19 +188,19 @@ export const Contact = () => {
                 rows={5}
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Tell me about your project, timeline, budget, and any specific requirements..."
-                className="w-full px-4 py-3 rounded-lg bg-transparent border border-retro-black/20 dark:border-white/20 text-retro-black dark:text-white focus:outline-none focus:border-retro-orange dark:focus:border-retro-orange transition-colors resize-none"
+                placeholder="Tell me about your project, timeline, and any specific scaling requirements..."
+                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-retro-orange focus:ring-1 focus:ring-retro-orange/30 transition-all font-medium placeholder:text-white/20 resize-none"
               ></textarea>
             </div>
 
             {status === 'success' && (
-              <div className="p-4 rounded-lg bg-green-500/10 dark:bg-green-500/20 text-green-700 dark:text-green-300 border border-green-500/20">
+              <div className="p-4 rounded-lg bg-green-500/10 text-green-400 border border-green-500/20 font-medium text-sm">
                 Message sent successfully! I'll get back to you soon.
               </div>
             )}
 
             {status === 'error' && (
-              <div className="p-4 rounded-lg bg-red-500/10 dark:bg-red-500/20 text-red-700 dark:text-red-300 border border-red-500/20">
+              <div className="p-4 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 font-medium text-sm">
                 {errorMessage}
               </div>
             )}
@@ -208,7 +208,7 @@ export const Contact = () => {
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="w-full px-6 py-3.5 rounded-lg bg-retro-orange text-white font-medium hover:bg-retro-rust focus:outline-none focus:ring-2 focus:ring-retro-orange focus:ring-offset-2 dark:focus:ring-offset-retro-dark transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full px-6 py-3.5 rounded-full bg-gradient-to-r from-retro-orange to-retro-rust text-white font-bold hover:shadow-[0_0_20px_rgba(255,107,53,0.45)] focus:outline-none transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm select-none"
             >
               {status === 'submitting' ? (
                 <>
@@ -238,8 +238,8 @@ export const Contact = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="lg:col-span-2 space-y-6"
         >
-          <div className="retro-card p-6 md:p-8 h-full flex flex-col">
-            <h3 className="flex items-center gap-2 text-xl font-bold text-retro-black dark:text-white mb-8">
+          <div className="glass-card p-6 md:p-8 h-full flex flex-col hover:border-white/15 transition-all duration-300">
+            <h3 className="flex items-center gap-2 text-xl font-extrabold text-white mb-8 select-none">
               <svg className="w-5 h-5 text-retro-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
@@ -247,33 +247,33 @@ export const Contact = () => {
             </h3>
 
             <div className="space-y-6 flex-grow">
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-retro-cream dark:bg-retro-gray/10">
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
                 <div className="mt-1">
                   <svg className="w-5 h-5 text-retro-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
                 <div>
-                  <div className="text-sm text-retro-gray dark:text-white/60 mb-1">Name</div>
-                  <div className="font-medium text-retro-black dark:text-white">Pratham Shah</div>
+                  <div className="text-xs text-white/40 mb-1 font-bold uppercase tracking-wider">Name</div>
+                  <div className="font-extrabold text-white">Pratham Shah</div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-retro-cream dark:bg-retro-gray/10">
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
                 <div className="mt-1">
                   <svg className="w-5 h-5 text-retro-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div className="break-all">
-                  <div className="text-sm text-retro-gray dark:text-white/60 mb-1">Email</div>
-                  <a href="mailto:itspratham2911@gmail.com" className="font-medium text-retro-orange hover:underline">
+                  <div className="text-xs text-white/40 mb-1 font-bold uppercase tracking-wider">Email</div>
+                  <a href="mailto:itspratham2911@gmail.com" className="font-bold text-retro-orange hover:underline">
                     itspratham2911@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-retro-cream dark:bg-retro-gray/10">
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
                 <div className="mt-1">
                   <svg className="w-5 h-5 text-retro-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -281,14 +281,14 @@ export const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <div className="text-sm text-retro-gray dark:text-white/60 mb-1">Location</div>
-                  <div className="font-medium text-retro-black dark:text-white">India</div>
+                  <div className="text-xs text-white/40 mb-1 font-bold uppercase tracking-wider">Location</div>
+                  <div className="font-extrabold text-white">India</div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-retro-black/10 dark:border-white/10">
-              <div className="text-sm text-retro-gray dark:text-white/60 mb-4">Follow Me</div>
+            <div className="mt-8 pt-6 border-t border-white/5 select-none">
+              <div className="text-xs text-white/40 mb-4 font-bold uppercase tracking-wider">Follow Me</div>
               <div className="flex flex-wrap gap-3">
                 {socialLinks.map((link) => {
                   const Icon = iconMap[link.icon as keyof typeof iconMap];
@@ -300,7 +300,7 @@ export const Contact = () => {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="p-3 rounded-xl bg-retro-paper dark:bg-retro-gray/30 text-retro-gray dark:text-white/70 hover:bg-retro-orange/10 hover:text-retro-orange border border-transparent hover:border-retro-orange/30 transition-all duration-200"
+                      className="p-3 rounded-xl bg-white/5 text-white/50 hover:bg-retro-orange/10 hover:text-retro-orange border border-white/5 hover:border-retro-orange/30 transition-all duration-200"
                       aria-label={link.name}
                     >
                       <Icon className="w-5 h-5" />

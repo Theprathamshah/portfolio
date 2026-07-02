@@ -44,9 +44,8 @@ function App() {
           id="main-content"
           className="relative z-10 h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth hide-scrollbar"
         >
-          {/* Hero / About Section */}
           <section id="about" className="h-screen w-full snap-start flex flex-col items-center justify-center px-4 relative shrink-0">
-            <div className="max-w-6xl mx-auto w-full">
+            <div className="max-w-7xl mx-auto w-full overflow-y-auto max-h-[85vh] scrollbar-hide py-4 px-2">
               <Hero />
             </div>
             <ScrollIndicator targetId="projects" className="absolute bottom-10" />

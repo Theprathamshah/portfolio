@@ -12,14 +12,14 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="retro-card p-6 md:p-8"
+      className="glass-card p-6 md:p-8 hover:border-white/15 transition-all duration-300"
     >
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-lg bg-retro-paper dark:bg-retro-gray/30">
-            <GitHubIcon className="w-6 h-6 text-retro-gray dark:text-white/70" />
+          <div className="p-2.5 rounded-lg bg-white/5 border border-white/5">
+            <GitHubIcon className="w-6 h-6 text-white/70" />
           </div>
-          <h3 className="text-2xl font-bold text-retro-black dark:text-white bg-gradient-to-r from-retro-black to-retro-gray dark:from-white dark:to-white/80 bg-clip-text text-transparent">
+          <h3 className="text-2xl font-extrabold text-white">
             GitHub Contributions
           </h3>
         </div>
@@ -76,12 +76,12 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="retro-card p-4 text-center"
+          className="glass-card p-4 text-center hover:border-white/20 transition-all duration-300"
         >
-          <div className="text-2xl font-bold text-retro-black dark:text-white mb-1">
+          <div className="text-2xl font-extrabold text-white mb-1">
             {loading ? '...' : error ? '—' : repos}
           </div>
-          <div className="text-xs text-retro-gray dark:text-white/60">Repositories</div>
+          <div className="text-xs text-white/50 font-medium">Repositories</div>
         </motion.div>
 
         <motion.div
@@ -89,12 +89,12 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="retro-card p-4 text-center"
+          className="glass-card p-4 text-center hover:border-white/20 transition-all duration-300"
         >
-          <div className="text-2xl font-bold text-retro-black dark:text-white mb-1">
+          <div className="text-2xl font-extrabold text-white mb-1">
             {loading ? '...' : error ? '—' : followers}
           </div>
-          <div className="text-xs text-retro-gray dark:text-retro-paper/60">Followers</div>
+          <div className="text-xs text-white/50 font-medium">Followers</div>
         </motion.div>
 
         <motion.div
@@ -102,7 +102,7 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="retro-card p-4 text-center"
+          className="glass-card p-4 text-center hover:border-white/20 transition-all duration-300"
         >
           <div className="text-2xl font-bold text-retro-black dark:text-white mb-1">
             {loading ? '...' : error ? '—' : following}
@@ -173,14 +173,14 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.1 }}
-      className="retro-card p-6 md:p-8"
+      className="glass-card p-6 md:p-8 hover:border-white/15 transition-all duration-300"
     >
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-lg bg-retro-paper dark:bg-retro-gray/30">
-            <LeetCodeIcon className="w-6 h-6 text-retro-gray dark:text-white/70" />
+          <div className="p-2.5 rounded-lg bg-white/5 border border-white/5">
+            <LeetCodeIcon className="w-6 h-6 text-white/70" />
           </div>
-          <h3 className="text-2xl font-bold text-retro-black dark:text-white bg-gradient-to-r from-retro-black to-retro-gray dark:from-white dark:to-white/80 bg-clip-text text-transparent">
+          <h3 className="text-2xl font-extrabold text-white">
             LeetCode Statistics
           </h3>
         </div>
@@ -189,7 +189,7 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.05 }}
-          className="text-sm text-retro-orange flex items-center gap-1 hover:underline"
+          className="text-sm text-retro-orange flex items-center gap-1 hover:underline font-bold"
         >
           Visit <ExternalLinkIcon className="w-3.5 h-3.5" />
         </motion.a>
@@ -202,12 +202,12 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="retro-card p-4 text-center"
+          className="glass-card p-4 text-center hover:border-white/20 transition-all duration-300"
         >
-          <div className="text-2xl font-bold text-retro-black dark:text-white mb-1">
+          <div className="text-2xl font-extrabold text-white mb-1">
             {loading ? '...' : error ? '—' : totalSolved?.toLocaleString() ?? '—'}
           </div>
-          <div className="text-xs text-retro-gray dark:text-white/60">Problems Solved</div>
+          <div className="text-xs text-white/50 font-medium">Problems Solved</div>
         </motion.div>
 
         <motion.div
@@ -215,12 +215,12 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="retro-card p-4 text-center"
+          className="glass-card p-4 text-center hover:border-white/20 transition-all duration-300"
         >
-          <div className="text-2xl font-bold text-retro-black dark:text-white mb-1">
+          <div className="text-2xl font-extrabold text-white mb-1">
             {loading ? '...' : error ? '—' : ranking?.toLocaleString() ?? '—'}
           </div>
-          <div className="text-xs text-retro-gray dark:text-retro-paper/60">Ranking</div>
+          <div className="text-xs text-white/50 font-medium">Ranking</div>
         </motion.div>
       </div>
 
@@ -276,41 +276,41 @@ const ChessCard = ({ profile }: { profile: typeof profiles[0] }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.1 }}
-      className="retro-card p-5 group block"
+      className="glass-card glass-card-hover p-5 group block"
     >
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-retro-paper dark:bg-retro-gray/30">
-            <span className="text-retro-gray dark:text-retro-paper/70">♞</span>
+          <div className="p-2 rounded-lg bg-white/5 border border-white/5">
+            <span className="text-white/70">♞</span>
           </div>
-          <span className="font-semibold text-retro-black dark:text-white">{title}</span>
+          <span className="font-bold text-white">{title}</span>
         </div>
-        <span className="text-sm text-retro-orange flex items-center gap-1 group-hover:underline">
+        <span className="text-sm text-retro-orange flex items-center gap-1 group-hover:underline font-bold">
           Visit <ExternalLinkIcon className="w-3.5 h-3.5" />
         </span>
       </div>
 
-      <p className="text-sm text-retro-gray dark:text-white/70 mb-1">@{profile.username}</p>
-      <p className="text-sm text-retro-gray dark:text-white/70">{loading ? 'Loading chess stats...' : error ? profile.description : `Best blitz ${data?.chess_blitz?.best?.rating ?? '—'}`}</p>
+      <p className="text-sm text-white/50 mb-1">@{profile.username}</p>
+      <p className="text-sm text-white/60 font-medium">{loading ? 'Loading chess stats...' : error ? profile.description : `Best blitz ${data?.chess_blitz?.best?.rating ?? '—'}`}</p>
 
-      <div className="flex gap-6 mt-4 pt-4 border-t border-retro-black/5 dark:border-white/5">
+      <div className="flex gap-6 mt-4 pt-4 border-t border-white/5">
         <div>
-          <p className="font-semibold text-retro-black dark:text-white">{loading ? '...' : error ? '—' : blitz ?? '—'}</p>
-          <p className="text-xs text-retro-gray dark:text-retro-paper/60">Blitz</p>
+          <p className="font-extrabold text-white">{loading ? '...' : error ? '—' : blitz ?? '—'}</p>
+          <p className="text-xs text-white/40 font-medium">Blitz</p>
         </div>
 
         <div className="grid grid-cols-3 gap-4 flex-1">
           <div>
-            <p className="font-semibold text-retro-black dark:text-white">{loading ? '...' : error ? '—' : rapid ?? '—'}</p>
-            <p className="text-xs text-retro-gray dark:text-white/60">Rapid</p>
+            <p className="font-extrabold text-white">{loading ? '...' : error ? '—' : rapid ?? '—'}</p>
+            <p className="text-xs text-white/45 font-medium">Rapid</p>
           </div>
           <div>
-            <p className="font-semibold text-retro-black dark:text-white">{loading ? '...' : error ? '—' : bullet ?? '—'}</p>
-            <p className="text-xs text-retro-gray dark:text-white/60">Bullet</p>
+            <p className="font-extrabold text-white">{loading ? '...' : error ? '—' : bullet ?? '—'}</p>
+            <p className="text-xs text-white/45 font-medium">Bullet</p>
           </div>
           <div>
-            <p className="font-semibold text-retro-black dark:text-white">{loading ? '...' : error ? '—' : tactics ?? '—'}</p>
-            <p className="text-xs text-retro-gray dark:text-retro-paper/60">Tactics</p>
+            <p className="font-extrabold text-white">{loading ? '...' : error ? '—' : tactics ?? '—'}</p>
+            <p className="text-xs text-white/40 font-medium">Tactics</p>
           </div>
         </div>
       </div>
@@ -335,12 +335,12 @@ export const Profiles = () => {
       transition={{ duration: 0.8 }}
       className="w-full max-w-6xl mx-auto"
     >
-      <div className="mb-12">
+      <div className="mb-12 select-none">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="inline-block px-4 py-1.5 rounded-full bg-retro-paper dark:bg-retro-gray/30 text-sm font-medium text-retro-black dark:text-white/80 border border-retro-black/10 dark:border-white/10 mb-4 uppercase tracking-widest"
+          className="inline-block px-4 py-1 rounded-full bg-white/5 text-[10px] font-bold text-retro-orange border border-white/10 mb-4 uppercase tracking-[0.2em]"
         >
           Track Record
         </motion.div>
@@ -349,18 +349,18 @@ export const Profiles = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-bold text-retro-black dark:text-white mb-4"
+          className="text-3xl md:text-5xl font-extrabold text-white mb-4 leading-tight tracking-tight"
         >
-          Technical <span className="text-retro-orange">Achievements</span>
+          Technical <span className="text-retro-orange text-glow">Achievements</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-lg text-retro-gray dark:text-white/70"
+          className="text-lg text-white/50 font-medium"
         >
-          Validation of skills through competitive programming, contributions, and strategy.
+          Validation of skills through competitive programming, open source contributions, and strategy.
         </motion.p>
       </div>
 
@@ -392,26 +392,26 @@ export const Profiles = () => {
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
            transition={{ duration: 0.6, delay: 0.5 }}
-           className="md:col-span-4 retro-card p-8 flex flex-col justify-center border-retro-orange/20"
+           className="md:col-span-4 glass-card p-8 flex flex-col justify-center border-retro-orange/20"
         >
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="max-w-xl">
-              <h3 className="font-bold text-retro-black dark:text-white text-2xl flex items-center gap-2 mb-2">
+            <div className="max-w-xl select-none">
+              <h3 className="font-extrabold text-white text-2xl flex items-center gap-2 mb-2">
                 <span className="text-retro-orange text-3xl">★</span> Open-source Contributions
               </h3>
-              <p className="text-retro-gray dark:text-white/60">
+              <p className="text-sm text-white/60 font-medium">
                 Active member of the developer community, contributing to tools that help thousands of developers worldwide.
               </p>
             </div>
 
             <ul className="grid sm:grid-cols-2 gap-4 flex-1">
-              <li className="p-4 rounded-xl bg-retro-paper dark:bg-retro-gray/20 border border-retro-black/5 dark:border-white/5">
+              <li className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-retro-orange/30 transition-all duration-300">
                 <a href="https://learngitbranching.js.org/" target="_blank" rel="noreferrer" className="text-retro-orange font-bold hover:underline block mb-1">Learn Git Branching</a>
-                <p className="text-xs text-retro-gray dark:text-white/50">UX/UI enhancements and core bug fixes for the interactive Git playground.</p>
+                <p className="text-xs text-white/50 font-medium">UX/UI enhancements and core bug fixes for the interactive Git playground.</p>
               </li>
-              <li className="p-4 rounded-xl bg-retro-paper dark:bg-retro-gray/20 border border-retro-black/5 dark:border-white/5">
+              <li className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-retro-orange/30 transition-all duration-300">
                 <a href="https://chesskit.org/" target="_blank" rel="noreferrer" className="text-retro-orange font-bold hover:underline block mb-1">ChessKit</a>
-                <p className="text-xs text-retro-gray dark:text-white/50">Implemented advanced ELO estimation logic for player analytics.</p>
+                <p className="text-xs text-white/50 font-medium">Implemented advanced ELO estimation logic for player analytics.</p>
               </li>
             </ul>
           </div>

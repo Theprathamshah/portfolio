@@ -15,7 +15,7 @@ export const Experience = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-3xl md:text-4xl font-semibold text-retro-black dark:text-white mb-4"
+        className="text-3xl md:text-5xl font-extrabold text-white mb-4 leading-tight tracking-tight select-none"
       >
         Professional Journey
       </motion.h2>
@@ -25,7 +25,7 @@ export const Experience = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.1 }}
-        className="text-lg text-retro-gray dark:text-white/70 mb-12"
+        className="text-lg text-white/50 mb-12 font-medium select-none"
       >
         My career path and the experiences that shaped me.
       </motion.p>
@@ -38,13 +38,13 @@ export const Experience = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6, delay: index * 0.15 }}
-            className="retro-card p-6 md:p-8 hover:shadow-lg transition-all duration-300"
+            className="glass-card glass-card-hover p-6 md:p-8"
           >
 
-            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-5 pb-4 border-b border-retro-black/5 dark:border-white/5">
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-5 pb-4 border-b border-white/5 select-none">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-xl md:text-2xl font-bold text-retro-black dark:text-white">
+                  <h3 className="text-xl md:text-2xl font-extrabold text-white">
                     {exp.company}
                   </h3>
                   {exp.current && (
@@ -52,29 +52,29 @@ export const Experience = () => {
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true }}
-                      className="text-xs font-medium px-2.5 py-1 rounded-full bg-retro-orange/10 text-retro-orange border border-retro-orange/20"
+                      className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-retro-orange/10 text-retro-orange border border-retro-orange/20"
                     >
                       Current
                     </motion.span>
                   )}
                 </div>
-                <p className="text-lg font-medium text-retro-gray dark:text-white/80">
+                <p className="text-lg font-bold text-white/70">
                   {exp.role}
                 </p>
               </div>
-              <div className="flex flex-col gap-1 text-sm text-retro-gray dark:text-retro-paper/60">
+              <div className="flex flex-col gap-1 text-sm text-white/40 font-medium">
                 <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-retro-orange/60"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-retro-orange/80"></span>
                   <span>{exp.type}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-retro-orange/60"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-retro-orange/80"></span>
                   <span>{exp.duration}</span>
                 </div>
               </div>
             </div>
 
-            <ul className="space-y-3 mb-6">
+            <ul className="space-y-3.5 mb-6">
               {exp.achievements.map((achievement, i) => (
                 <motion.li
                   key={i}
@@ -82,20 +82,20 @@ export const Experience = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 + i * 0.05 }}
-                  className="flex items-start gap-3 text-base text-retro-gray dark:text-white/80 leading-relaxed"
+                  className="flex items-start gap-3 text-base text-white/70 leading-relaxed font-medium"
                 >
-                  <span className="text-retro-orange mt-1.5 flex-shrink-0 font-bold">▸</span>
+                  <span className="text-retro-orange mt-1.5 flex-shrink-0 font-extrabold text-sm">→</span>
                   <span>{achievement}</span>
                 </motion.li>
               ))}
             </ul>
 
             {exp.skills && (
-              <div className="flex flex-wrap gap-2 pt-4 border-t border-retro-black/5 dark:border-white/5">
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5 select-none">
                 {exp.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="text-xs px-3 py-1.5 rounded-full bg-retro-teal/10 text-retro-teal dark:bg-retro-teal/20 border border-retro-teal/20 font-medium"
+                    className="text-[10px] px-3 py-1.5 rounded-full bg-white/5 text-white/60 border border-white/5 font-extrabold uppercase tracking-wider"
                   >
                     {skill}
                   </span>

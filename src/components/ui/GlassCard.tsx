@@ -18,7 +18,7 @@ export const Card = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.4, delay }}
-      className={`retro-card retro-card-hover p-6 ${className}`}
+      className={`glass-card glass-card-hover p-6 ${className}`}
     >
       {children}
     </motion.div>
