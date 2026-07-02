@@ -177,7 +177,7 @@ export const Hero = () => {
                 className="p-2.5 rounded-full border border-white/10 hover:border-retro-orange/40 text-white/40 hover:text-retro-orange transition-all duration-300"
                 aria-label="GitHub"
               >
-                <GitHubIcon className="w-4.5 h-4.5" />
+                <GitHubIcon className="w-5 h-5" />
               </motion.a>
 
               <motion.a
@@ -189,7 +189,7 @@ export const Hero = () => {
                 className="p-2.5 rounded-full border border-white/10 hover:border-retro-orange/40 text-white/40 hover:text-retro-orange transition-all duration-300"
                 aria-label="LinkedIn"
               >
-                <LinkedInIcon className="w-4.5 h-4.5" />
+                <LinkedInIcon className="w-5 h-5" />
               </motion.a>
 
               <motion.a
@@ -199,7 +199,7 @@ export const Hero = () => {
                 className="p-2.5 rounded-full border border-white/10 hover:border-retro-orange/40 text-white/40 hover:text-retro-orange transition-all duration-300"
                 aria-label="Email"
               >
-                <MailIcon className="w-4.5 h-4.5" />
+                <MailIcon className="w-5 h-5" />
               </motion.a>
             </div>
           </motion.div>

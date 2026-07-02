@@ -463,8 +463,11 @@ export const TechStack = () => {
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               className="p-3 rounded-xl bg-retro-orange/10 text-retro-orange border border-retro-orange/20 flex-shrink-0"
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 3.5s2.25-1 3.5-2.5" />
+                <path d="M12 2C6.5 2 2 6.5 2 12c0 2.5 1 4.9 2.5 6.5L8 14l3 3 6.5 6.5c1.6 1.5 4 2.5 6.5 2.5 0-2.5-1-4.9-2.5-6.5L14 16" />
+                <path d="M9 15l-3 3" />
+                <path d="M15 9l3-3" />
               </svg>
             </motion.div>
             <div>
