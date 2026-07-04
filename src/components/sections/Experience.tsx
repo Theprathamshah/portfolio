@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { experiences } from '@/data/portfolio';
+import { TechBadge } from '../ui/TechBadge';
 
 export const Experience = () => {
   return (
@@ -93,12 +94,7 @@ export const Experience = () => {
             {exp.skills && (
               <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5 select-none">
                 {exp.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="text-[10px] px-3 py-1.5 rounded-full bg-white/5 text-white/60 border border-white/5 font-extrabold uppercase tracking-wider"
-                  >
-                    {skill}
-                  </span>
+                  <TechBadge key={skill} name={skill} interactive={true} />
                 ))}
               </div>
             )}

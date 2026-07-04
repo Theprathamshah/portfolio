@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Project } from '@/types';
 import { GitHubIcon, ExternalLinkIcon } from './Icons';
+import { TechBadge } from './TechBadge';
 
 interface ProjectCardProps {
   project: Project;
@@ -101,12 +102,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
         {/* Tech tags styled as rounded-full glassmorphic pill badges */}
         <div className="mt-auto flex flex-wrap gap-2">
           {project.tech.map((skill) => (
-            <span
-              key={skill}
-              className="px-3 py-1 text-[10px] uppercase tracking-wider font-extrabold rounded-full bg-white/5 text-white/55 border border-white/5"
-            >
-              {skill}
-            </span>
+            <TechBadge key={skill} name={skill} interactive={true} />
           ))}
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, MouseEvent } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { TechBadge } from '../ui/TechBadge';
 
 // CountUp component to animate statistics numbers when scrolled into view
 interface CountUpProps {
@@ -40,118 +41,6 @@ const CountUp = ({ value, duration = 1.5 }: CountUpProps) => {
   return <span ref={ref}>{count}</span>;
 };
 
-// Premium brand vectors for Tech Badges matching mockups exactly
-const getTechIcon = (name: string) => {
-  const key = name.toLowerCase().replace(/[\s./-]/g, '');
-
-  if (key === 'java') {
-    return (
-      <svg className="w-3 h-3 text-[#E44F26]" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.6v-2h2v2h-2zm0-3.6V6.4h2V14h-2z" />
-      </svg>
-    );
-  }
-  if (key === 'go') {
-    return (
-      <svg className="w-3 h-3 text-[#00ADD8]" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-      </svg>
-    );
-  }
-  if (key === 'python') {
-    return (
-      <svg className="w-3 h-3 text-[#FFD43B]" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5v-1.6h-2v1.6h-2v-4.1h6v4.1h-2z" />
-      </svg>
-    );
-  }
-  if (key === 'typescript') {
-    return (
-      <svg className="w-3 h-3 text-[#3178C6]" viewBox="0 0 24 24" fill="currentColor">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M12 11.5v7h-2.5v-7H12zm5 1.5v5.5h-2.5V13c0-.8-.6-1.5-1.5-1.5H12v-2h1c1.8 0 4 1 4 3.5z" fill="white" />
-      </svg>
-    );
-  }
-  if (key === 'javascript') {
-    return (
-      <svg className="w-3 h-3 text-[#F7DF1E]" viewBox="0 0 24 24" fill="currentColor">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M12 16c0 1.5-1 2.5-2.5 2.5S7 17.5 7 16h2.5c0 .5.3.8.8.8s.8-.3.8-.8v-5h2.5v5zm6.5-1.5H16V16c0 .8-.6 1.5-1.5 1.5s-1.5-.7-1.5-1.5v-5.5h2.5v4.5h1.5v-4.5H19v5.5c0 1.5-1 2.5-2.5 2.5z" fill="black" />
-      </svg>
-    );
-  }
-  if (key === 'linux') {
-    return (
-      <svg className="w-3 h-3 text-white/90" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 14.9h-2v-2h2v2zm1.6-4.8l-.8.9c-.6.7-.8 1.4-.8 2h-2v-.5c0-1.1.4-2.1 1.2-2.9l1.2-1.2c.4-.4.6-.9.6-1.4 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.2 1.8-4 4-4s4 1.8 4 4c0 .9-.4 1.7-1 2.1z" />
-      </svg>
-    );
-  }
-  if (key === 'docker') {
-    return (
-      <svg className="w-3 h-3 text-[#2496ED]" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M13.983 8.871h-1.996v1.996h1.996V8.871zm-2.495 0H9.492v1.996h1.996V8.871zm-2.495 0H6.997v1.996h1.996V8.871zm-2.496 0H4.501v1.996h1.996V8.871zm5.2 6.5s-2.02-.15-2.6-.58v-1.16s.58.43 2.6.58zm5.295-8.5h-1.996v1.996h1.996V6.871zm-2.495 0H11.99v1.996h1.996V6.871zm-2.495 0H9.492v1.996h1.996V6.871zm-2.496 0H6.997v1.996h1.996V6.871zm-1.802 8s.5-1.5 2-1.5h14c1 0 1.5.5 1.5 1.5s-1.5 2.5-3 2.5H4.5c-1.5 0-2.5-1-2.5-2.5z" />
-      </svg>
-    );
-  }
-  if (key === 'springboot' || key === 'hibernate') {
-    return (
-      <svg className="w-3 h-3 text-[#6DB33F]" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17 8h-3V4c0-1.1-.9-2-2-2s-2 .9-2 2v4H7c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-5-4c0-.55.45-1 1-1s1 .45 1 1v4h-2V4z" />
-      </svg>
-    );
-  }
-  if (key === 'postgresql' || key === 'mysql' || key === 'mongodb' || key === 'redis' || key === 'dynamodb' || key === 'elasticsearch') {
-    return (
-      <svg className="w-3 h-3 text-[#4169E1]" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.9v-2.2c-2.4-.3-4-1.5-4-3.6h2c.1 1.1 1.2 1.8 2.1 1.8s2-.7 2-1.8c0-.9-1.2-1.4-2.5-1.9" />
-      </svg>
-    );
-  }
-  if (key === 'react' || key === 'nextjs') {
-    return (
-      <svg className="w-3 h-3 text-[#61DAFB]" viewBox="0 0 24 24" fill="currentColor">
-        <circle cx="12" cy="12" r="2" />
-        <path d="M12 7c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
-      </svg>
-    );
-  }
-  if (key.includes('aws') || key === 's3' || key === 'sqs' || key === 'sns' || key === 'kinesis' || key === 'iam' || key === 'cloudwatch' || key === 'stepfunctions' || key === 'eventbridge') {
-    return (
-      <svg className="w-3 h-3 text-[#FF9900]" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
-      </svg>
-    );
-  }
-
-  // Fallback icon for abstract concepts (system design, microservices, concurrency, CI/CD, etc.)
-  return (
-    <svg className="w-3 h-3 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-    </svg>
-  );
-};
-
-const TechBadge = ({ name }: { name: string }) => {
-  const icon = getTechIcon(name);
-  return (
-    <motion.span
-      whileHover={{
-        scale: 1.03,
-        y: -1,
-        borderColor: 'rgba(255, 107, 53, 0.25)',
-        boxShadow: '0 0 10px rgba(255, 107, 53, 0.12)',
-        backgroundColor: 'rgba(255, 107, 53, 0.04)',
-      }}
-      transition={{ duration: 0.15 }}
-      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider rounded-full bg-white/[0.03] text-white/75 border border-white/[0.06] hover:text-white cursor-default select-none transition-colors"
-    >
-      {icon}
-      <span>{name}</span>
-    </motion.span>
-  );
-};
 
 interface SaaSTechCardProps {
   title: string;
