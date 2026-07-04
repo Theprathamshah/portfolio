@@ -256,7 +256,7 @@ export const SystemArchitecture = () => {
   ];
 
   return (
-    <div className="w-full relative glass-card p-6 flex flex-col justify-between aspect-[1.5] min-h-[380px] md:min-h-[420px] select-none">
+    <div className="w-full relative bg-white dark:bg-retro-black border border-retro-black/[0.08] dark:border-white/[0.08] rounded-[24px] shadow-[0_8px_32px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)] p-6 flex flex-col justify-between aspect-[1.5] min-h-[380px] md:min-h-[420px] select-none z-10">
       <style>{`
         @keyframes flow {
           to {

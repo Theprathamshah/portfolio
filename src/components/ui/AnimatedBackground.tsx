@@ -1,17 +1,21 @@
 export const AnimatedBackground = () => {
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 bg-retro-cream dark:bg-retro-black transition-colors duration-300">
-      {/* Subtle fading engineering grid */}
-      <div className="absolute inset-0 bg-grid" />
-      
-      {/* Top-Left Ambient Glow (Orange) */}
-      <div className="absolute -top-[20%] -left-[20%] w-[650px] h-[650px] rounded-full bg-retro-orange/[0.035] blur-[180px]" />
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 bg-white dark:bg-retro-black transition-colors duration-300">
+      {/* 1. Base breathing ambient gradient flow layer (10% opacity) */}
+      <div className="absolute inset-0 bg-animated-gradient opacity-10" />
 
-      {/* Bottom-Left Ambient Glow (Blue) */}
-      <div className="absolute -bottom-[20%] -left-[20%] w-[650px] h-[650px] rounded-full bg-retro-blue/[0.03] blur-[180px]" />
+      {/* 2. Floating Ambient Glow Accent Blobs */}
+      {/* Orange Glow (Left Side) */}
+      <div className="absolute -top-[10%] -left-[10%] w-[600px] h-[600px] rounded-full bg-[#FF6B35]/[0.12] dark:bg-[#FF6B35]/[0.22] blur-[130px] animate-blob" />
 
-      {/* Bottom-Right Ambient Glow (Purple) */}
-      <div className="absolute -bottom-[20%] -right-[20%] w-[650px] h-[650px] rounded-full bg-retro-purple/[0.03] blur-[180px]" />
-     </div>
+      {/* Purple Glow (Right Side) */}
+      <div 
+        className="absolute -bottom-[15%] -right-[15%] w-[600px] h-[600px] rounded-full bg-[#7C3AED]/[0.1] dark:bg-[#7C3AED]/[0.18] blur-[130px] animate-blob" 
+        style={{ animationDelay: '4s' }}
+      />
+
+      {/* 3. Static CSS-drawn Grid Overlay (on top of glows) */}
+      <div className="absolute inset-0 bg-grid-lines" />
+    </div>
   );
 };

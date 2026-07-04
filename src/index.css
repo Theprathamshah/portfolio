@@ -185,4 +185,53 @@
   html.dark .text-glow {
     text-shadow: 0 0 25px rgba(255, 110, 64, 0.4);
   }
+
+  .bg-animated-gradient {
+    background: linear-gradient(-45deg, #ffe5d9, #fec5bb, #fdf8f5, #fec5bb, #ffe5d9);
+    background-size: 400% 400%;
+    animation: gradient-breath 20s ease infinite;
+  }
+
+  html.dark .bg-animated-gradient {
+    background: linear-gradient(-45deg, #120c1f, #0a1435, #05060b, #0a1435, #120c1f);
+    background-size: 400% 400%;
+  }
+
+  @keyframes gradient-breath {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .bg-grid-lines {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, #f3f4f6 1px, transparent 1px),
+      linear-gradient(to bottom, #f3f4f6 1px, transparent 1px);
+  }
+
+  html.dark .bg-grid-lines {
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  }
+
+  .animate-blob {
+    animation: float-blob 22s infinite ease-in-out;
+  }
+
+  @keyframes float-blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(40px, -60px) scale(1.08);
+    }
+    66% {
+      transform: translate(-30px, 30px) scale(0.92);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
 }
