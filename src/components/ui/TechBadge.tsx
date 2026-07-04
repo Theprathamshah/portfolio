@@ -97,7 +97,7 @@ export const getTechIcon = (name: string) => {
     case 'express':
     case 'expressjs':
       return (
-        <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg className="w-3 h-3 text-retro-black dark:text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <rect x="3" y="3" width="18" height="18" rx="2" />
           <path d="M7 8h10M7 12h7M7 16h10" />
         </svg>
@@ -263,7 +263,7 @@ export const getTechIcon = (name: string) => {
     case 'next':
     case 'nextjs':
       return (
-        <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor">
+        <svg className="w-3 h-3 text-retro-black dark:text-white" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.33 18.25l-4.9-7.23V18h-2.12V8.4h2.12l4.82 7.1V8.4h2.08v9.85z" />
         </svg>
       );
@@ -355,7 +355,7 @@ export const getTechIcon = (name: string) => {
     default:
       // Fallback icon for abstract concepts (system design, microservices, concurrency, CI/CD, etc.)
       return (
-        <svg className="w-3 h-3 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+        <svg className="w-3 h-3 text-retro-gray/50 dark:text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       );
@@ -372,7 +372,7 @@ export const TechBadge = ({ name, interactive = true }: TechBadgeProps) => {
 
   if (!interactive) {
     return (
-      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider rounded-full bg-white/[0.03] text-white/75 border border-white/[0.06] select-none">
+      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider rounded-full bg-retro-black/[0.03] dark:bg-white/[0.03] text-retro-gray dark:text-white/75 border border-retro-black/[0.06] dark:border-white/[0.06] select-none">
         {icon}
         <span>{name}</span>
       </span>
@@ -389,7 +389,7 @@ export const TechBadge = ({ name, interactive = true }: TechBadgeProps) => {
         backgroundColor: 'rgba(255, 107, 53, 0.04)',
       }}
       transition={{ duration: 0.15 }}
-      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider rounded-full bg-white/[0.03] text-white/75 border border-white/[0.06] hover:text-white cursor-default select-none transition-colors"
+      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider rounded-full bg-retro-black/[0.03] dark:bg-white/[0.03] text-retro-gray dark:text-white/75 border border-retro-black/[0.06] dark:border-white/[0.06] hover:text-retro-black dark:hover:text-white cursor-default select-none transition-colors"
     >
       {icon}
       <span>{name}</span>

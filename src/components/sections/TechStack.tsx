@@ -91,7 +91,7 @@ const SaaSTechCard = ({ title, icon, description, badges, bottomLabel, bottomIco
       viewport={{ once: true, margin: '-50px' }}
       whileHover={{ y: -6, scale: 1.005 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
-      className="relative flex flex-col justify-between bg-white/[0.02] border border-white/[0.07] backdrop-blur-[20px] -webkit-backdrop-blur-[20px] rounded-[24px] p-6 md:p-8 shadow-xl overflow-hidden hover:border-retro-orange/30 transition-colors duration-300 select-none group w-full min-h-[500px]"
+      className="relative flex flex-col justify-between bg-retro-black/[0.02] dark:bg-white/[0.02] border border-retro-black/[0.07] dark:border-white/[0.07] backdrop-blur-[20px] -webkit-backdrop-blur-[20px] rounded-[24px] p-6 md:p-8 shadow-xl overflow-hidden hover:border-retro-orange/30 transition-colors duration-300 select-none group w-full min-h-[500px]"
     >
       {/* Dynamic Cursor Highlight overlay */}
       {isHovered && (
@@ -109,18 +109,18 @@ const SaaSTechCard = ({ title, icon, description, badges, bottomLabel, bottomIco
           <motion.div
             animate={{ scale: [1, 1.03, 1] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            className="p-3 rounded-2xl bg-white/[0.04] text-white/80 border border-white/[0.06] group-hover:bg-retro-orange/10 group-hover:text-retro-orange transition-colors"
+            className="p-3 rounded-2xl bg-retro-black/[0.04] dark:bg-white/[0.04] text-retro-gray dark:text-white/80 border border-retro-black/[0.06] dark:border-white/[0.06] group-hover:bg-retro-orange/10 group-hover:text-retro-orange transition-colors"
           >
             {icon}
           </motion.div>
           <div>
-            <h3 className="text-lg font-extrabold text-white tracking-tight">
+            <h3 className="text-lg font-extrabold text-retro-black dark:text-white tracking-tight">
               {title}
             </h3>
           </div>
         </div>
 
-        <p className="text-xs text-white/55 leading-relaxed font-semibold mb-6">
+        <p className="text-xs text-retro-gray dark:text-white/55 leading-relaxed font-semibold mb-6">
           {description}
         </p>
 
@@ -141,13 +141,13 @@ const SaaSTechCard = ({ title, icon, description, badges, bottomLabel, bottomIco
       </div>
 
       {/* High-Fidelity Bottom Focus Bar */}
-      <div className="relative z-10 pt-4 border-t border-white/[0.05] mt-auto flex items-center gap-2 text-[10px] md:text-xs">
+      <div className="relative z-10 pt-4 border-t border-retro-black/[0.05] dark:border-white/[0.05] mt-auto flex items-center gap-2 text-[10px] md:text-xs">
         <div className="text-retro-orange shrink-0">
           {bottomIcon}
         </div>
-        <div className="font-extrabold text-white/80 leading-tight">
+        <div className="font-extrabold text-retro-gray/80 dark:text-white/80 leading-tight">
           {bottomLabel.split(':')[0]}: 
-          <span className="font-medium text-white/50 ml-1">
+          <span className="font-medium text-retro-gray/55 dark:text-white/50 ml-1">
             {bottomLabel.split(':')[1]}
           </span>
         </div>
@@ -322,7 +322,7 @@ export const TechStack = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-3xl md:text-5xl font-extrabold text-white mb-4 leading-tight tracking-tight"
+            className="text-3xl md:text-5xl font-extrabold text-retro-black dark:text-white mb-4 leading-tight tracking-tight"
           >
             Skills & Technical <span className="text-retro-orange text-glow">Arsenal</span>
           </motion.h2>
@@ -331,7 +331,7 @@ export const TechStack = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-sm md:text-base text-white/55 font-medium leading-relaxed max-w-xl"
+            className="text-sm md:text-base text-retro-gray dark:text-white/55 font-medium leading-relaxed max-w-xl"
           >
             Technologies, frameworks, and tools I use to build distributed systems at scale.
           </motion.p>
@@ -360,10 +360,10 @@ export const TechStack = () => {
               </svg>
             </motion.div>
             <div>
-              <h4 className="text-[11px] font-extrabold text-white/95 tracking-wide uppercase mb-0.5">
+              <h4 className="text-[11px] font-extrabold text-retro-black dark:text-white/95 tracking-wide uppercase mb-0.5">
                 Always learning. Always building.
               </h4>
-              <div className="flex items-center gap-1 text-[9px] font-bold text-white/45 uppercase tracking-wider">
+              <div className="flex items-center gap-1 text-[9px] font-bold text-retro-gray/60 dark:text-white/45 uppercase tracking-wider">
                 <span>Exploring</span>
                 <span className="text-retro-orange">•</span>
                 <span>Building</span>
@@ -416,10 +416,10 @@ export const TechStack = () => {
               {stat.icon}
             </motion.div>
             <div className="flex flex-col text-left">
-              <div className="text-2xl font-extrabold text-white leading-none mb-1 tracking-tight">
+              <div className="text-2xl font-extrabold text-retro-black dark:text-white leading-none mb-1 tracking-tight">
                 <CountUp value={stat.value} />+
               </div>
-              <div className="text-[9px] font-extrabold text-white/40 uppercase tracking-widest leading-tight max-w-[120px]">
+              <div className="text-[9px] font-extrabold text-retro-gray/60 dark:text-white/40 uppercase tracking-widest leading-tight max-w-[120px]">
                 {stat.label}
               </div>
             </div>

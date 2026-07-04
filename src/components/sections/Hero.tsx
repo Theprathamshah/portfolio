@@ -118,10 +118,10 @@ export const Hero = () => {
             <span className="text-sm font-bold text-retro-orange uppercase tracking-[0.25em]">
               Hi, I'm Pratham Shah
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-retro-black dark:text-white leading-tight tracking-tight">
               Build <span className="text-retro-orange text-glow">Scalable</span> Distributed Systems
             </h1>
-            <h2 className="text-2xl md:text-3xl font-bold text-white/50 leading-tight">
+            <h2 className="text-2xl md:text-3xl font-bold text-retro-gray/50 dark:text-white/50 leading-tight">
               Elegant Backend Architecture
             </h2>
           </motion.div>
@@ -131,7 +131,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.35 }}
-            className="text-base text-white/60 leading-relaxed mb-8 max-w-xl font-medium"
+            className="text-base text-retro-gray dark:text-white/60 leading-relaxed mb-8 max-w-xl font-medium"
           >
             Backend-focused engineer passionate about designing distributed systems and high-performance architectures. 
             I love turning complex problems into simple, efficient and reliable solutions.
@@ -162,7 +162,7 @@ export const Hero = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              className="px-6 py-3.5 rounded-full bg-white/5 hover:bg-white/10 text-white font-bold border border-white/10 hover:border-white/20 transition-all duration-300 text-sm"
+              className="px-6 py-3.5 rounded-full bg-retro-black/5 hover:bg-retro-black/10 dark:bg-white/5 dark:hover:bg-white/10 text-retro-black dark:text-white font-bold border border-retro-black/10 dark:border-white/10 hover:border-retro-black/20 dark:hover:border-white/20 transition-all duration-300 text-sm"
             >
               Read Resume
             </motion.a>
@@ -174,7 +174,7 @@ export const Hero = () => {
                 rel="noopener noreferrer"
                 whileHover={{ y: -3, scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-2.5 rounded-full border border-white/10 hover:border-retro-orange/40 text-white/40 hover:text-retro-orange transition-all duration-300"
+                className="p-2.5 rounded-full border border-retro-black/10 dark:border-white/10 hover:border-retro-orange/40 text-retro-gray/50 dark:text-white/40 hover:text-retro-orange transition-all duration-300"
                 aria-label="GitHub"
               >
                 <GitHubIcon className="w-5 h-5" />
@@ -186,7 +186,7 @@ export const Hero = () => {
                 rel="noopener noreferrer"
                 whileHover={{ y: -3, scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-2.5 rounded-full border border-white/10 hover:border-retro-orange/40 text-white/40 hover:text-retro-orange transition-all duration-300"
+                className="p-2.5 rounded-full border border-retro-black/10 dark:border-white/10 hover:border-retro-orange/40 text-retro-gray/50 dark:text-white/40 hover:text-retro-orange transition-all duration-300"
                 aria-label="LinkedIn"
               >
                 <LinkedInIcon className="w-5 h-5" />
@@ -196,7 +196,7 @@ export const Hero = () => {
                 href="mailto:itspratham2911@gmail.com"
                 whileHover={{ y: -3, scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-2.5 rounded-full border border-white/10 hover:border-retro-orange/40 text-white/40 hover:text-retro-orange transition-all duration-300"
+                className="p-2.5 rounded-full border border-retro-black/10 dark:border-white/10 hover:border-retro-orange/40 text-retro-gray/50 dark:text-white/40 hover:text-retro-orange transition-all duration-300"
                 aria-label="Email"
               >
                 <MailIcon className="w-5 h-5" />
@@ -229,12 +229,12 @@ export const Hero = () => {
             <span className="text-[10px] uppercase tracking-[0.3em] font-extrabold text-retro-orange">
               About Me
             </span>
-            <h3 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">
+            <h3 className="text-2xl md:text-3xl font-extrabold text-retro-black dark:text-white leading-tight">
               Backend engineer with a passion for <span className="text-retro-orange text-glow">scale</span>.
             </h3>
           </div>
           <div className="md:col-span-8 flex flex-col gap-6">
-            <p className="text-base text-white/60 leading-relaxed max-w-2xl font-medium">
+            <p className="text-base text-retro-gray dark:text-white/60 leading-relaxed max-w-2xl font-medium">
               I specialize in designing and building distributed systems that
               handle millions of requests with low latency and high reliability.
             </p>
@@ -244,7 +244,7 @@ export const Hero = () => {
               {techTags.map((tag) => (
                 <div
                   key={tag.name}
-                  className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/90 text-xs font-bold shadow-sm hover:border-retro-orange/30 hover:bg-white/10 transition-all select-none"
+                  className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-retro-black/5 dark:bg-white/5 border border-retro-black/10 dark:border-white/10 text-retro-black/90 dark:text-white/90 text-xs font-bold shadow-sm hover:border-retro-orange/30 hover:bg-retro-black/10 dark:hover:bg-white/10 transition-all select-none"
                 >
                   {tag.icon}
                   <span>{tag.name}</span>

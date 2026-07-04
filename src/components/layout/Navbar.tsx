@@ -18,11 +18,13 @@ export const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
+    const mainContent = document.getElementById('main-content');
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (!mainContent) return;
+      setIsScrolled(mainContent.scrollTop > 50);
 
       const sections: string[] = ['about', 'projects', 'experience', 'tech', 'achievements', 'contact'];
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = mainContent.scrollTop + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const sectionId = sections[i];
@@ -35,9 +37,15 @@ export const Navbar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
-    return () => window.removeEventListener('scroll', handleScroll);
+    if (mainContent) {
+      mainContent.addEventListener('scroll', handleScroll);
+      handleScroll(); // Initial check
+    }
+    return () => {
+      if (mainContent) {
+        mainContent.removeEventListener('scroll', handleScroll);
+      }
+    };
   }, []);
 
   return (

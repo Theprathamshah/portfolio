@@ -51,17 +51,27 @@
 
 @layer components {
   .glass-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 20px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  html.dark .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  }
+
   .glass-card-hover {
-    @apply hover:border-retro-orange/30 hover:bg-white/[0.05] hover:-translate-y-1 hover:shadow-xl hover:shadow-retro-orange/5;
+    @apply hover:border-retro-orange/30 hover:bg-white/[0.6] hover:-translate-y-1 hover:shadow-xl hover:shadow-retro-orange/5;
+  }
+
+  html.dark .glass-card-hover {
+    @apply hover:bg-white/[0.05] hover:shadow-retro-orange/5;
   }
 
   .retro-card {

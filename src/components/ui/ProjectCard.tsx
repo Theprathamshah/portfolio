@@ -27,7 +27,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
                 <div className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
                 <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
-                <div className="ml-2 px-2 py-0.5 rounded text-[10px] bg-white/5 text-white/50 truncate max-w-[150px] font-bold">
+                <div className="ml-2 px-2 py-0.5 rounded text-[10px] bg-retro-black/10 dark:bg-white/5 text-retro-gray/60 dark:text-white/50 truncate max-w-[150px] font-bold">
                   {project.link.replace('https://', '')}
                 </div>
               </div>
@@ -54,7 +54,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
       <div className="p-6 flex flex-col flex-grow select-none">
         <div className="flex justify-between items-start mb-4">
-          <h3 className="text-xl font-extrabold text-white group-hover:text-retro-orange transition-colors">
+          <h3 className="text-xl font-extrabold text-retro-black dark:text-white group-hover:text-retro-orange transition-colors">
             {project.title}
           </h3>
           <div className="flex gap-2">
@@ -63,7 +63,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-white/5 text-white/50 hover:text-retro-orange hover:bg-white/10 transition-all border border-white/10 hover:border-retro-orange/30"
+                className="p-2.5 rounded-full bg-retro-black/5 dark:bg-white/5 text-retro-gray/60 dark:text-white/50 hover:text-retro-orange hover:bg-retro-black/10 dark:hover:bg-white/10 transition-all border border-retro-black/10 dark:border-white/10 hover:border-retro-orange/30"
                 aria-label="View Source"
               >
                 <GitHubIcon className="w-4.5 h-4.5" />
@@ -74,7 +74,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-white/5 text-white/50 hover:text-retro-orange hover:bg-white/10 transition-all border border-white/10 hover:border-retro-orange/30"
+                className="p-2.5 rounded-full bg-retro-black/5 dark:bg-white/5 text-retro-gray/60 dark:text-white/50 hover:text-retro-orange hover:bg-retro-black/10 dark:hover:bg-white/10 transition-all border border-retro-black/10 dark:border-white/10 hover:border-retro-orange/30"
                 aria-label="Live Demo"
               >
                 <ExternalLinkIcon className="w-4.5 h-4.5" />
@@ -83,7 +83,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
           </div>
         </div>
         
-        <p className="text-sm text-white/60 mb-6 leading-relaxed font-medium">
+        <p className="text-sm text-retro-gray dark:text-white/60 mb-6 leading-relaxed font-medium">
           {project.description}
         </p>
 

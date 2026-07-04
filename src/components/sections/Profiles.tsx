@@ -3,23 +3,25 @@ import { useEffect, useState } from 'react';
 import { GitHubIcon, LeetCodeIcon, ExternalLinkIcon } from '../ui/Icons';
 import { profiles } from '@/data/portfolio';
 import { useGitHubData } from '@/hooks/useGitHubData';
+import { useTheme } from '@/context/ThemeContext';
 
 const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
   const { repos, followers, following, loading, error } = useGitHubData(profile.username);
+  const { theme } = useTheme();
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="glass-card p-6 md:p-8 hover:border-white/15 transition-all duration-300"
+      className="glass-card p-6 md:p-8 hover:border-retro-orange/30 dark:hover:border-white/15 transition-all duration-300"
     >
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-lg bg-white/5 border border-white/5">
-            <GitHubIcon className="w-6 h-6 text-white/70" />
+          <div className="p-2.5 rounded-lg bg-retro-black/5 dark:bg-white/5 border border-retro-black/5 dark:border-white/5">
+            <GitHubIcon className="w-6 h-6 text-retro-gray dark:text-white/70" />
           </div>
-          <h3 className="text-2xl font-extrabold text-white">
+          <h3 className="text-2xl font-extrabold text-retro-black dark:text-white">
             GitHub Contributions
           </h3>
         </div>
@@ -36,14 +38,14 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
 
 
       <div className="mb-6 p-4 bg-retro-paper dark:bg-retro-gray/20 rounded-lg border border-retro-black/5 dark:border-white/5">
-        <div className="w-full overflow-x-auto bg-black rounded-lg p-4 min-h-[150px] flex items-center justify-center">
+        <div className="w-full overflow-x-auto bg-retro-offWhite dark:bg-black rounded-lg p-4 min-h-[150px] flex items-center justify-center">
           {loading ? (
-            <div className="flex flex-col items-center gap-2 text-white/60">
-              <div className="w-8 h-8 border-2 border-white/20 border-t-white/60 rounded-full animate-spin"></div>
+            <div className="flex flex-col items-center gap-2 text-retro-gray dark:text-white/60">
+              <div className="w-8 h-8 border-2 border-retro-black/20 border-t-retro-black/60 dark:border-white/20 dark:border-t-white/60 rounded-full animate-spin"></div>
               <p className="text-sm">Loading contribution graph...</p>
             </div>
           ) : error ? (
-            <div className="flex flex-col items-center gap-2 text-white/60">
+            <div className="flex flex-col items-center gap-2 text-retro-gray dark:text-white/60">
               <p className="text-sm">Unable to load contribution graph</p>
               <a
                 href={profile.link}
@@ -56,7 +58,7 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
             </div>
           ) : (
             <img
-              src={`https://github-contributions-api.jogruber.de/v4/${profile.username}?no-total=true&no-legend=true&format=svg&theme=github-dark`}
+              src={`https://github-contributions-api.jogruber.de/v4/${profile.username}?no-total=true&no-legend=true&format=svg&theme=${theme === 'dark' ? 'github-dark' : 'github-light'}`}
               alt="GitHub Contribution Graph"
               className="w-full h-auto"
               onError={(e) => {
@@ -76,12 +78,12 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="glass-card p-4 text-center hover:border-white/20 transition-all duration-300"
+          className="glass-card p-4 text-center hover:border-retro-orange/30 dark:hover:border-white/20 transition-all duration-300"
         >
-          <div className="text-2xl font-extrabold text-white mb-1">
+          <div className="text-2xl font-extrabold text-retro-black dark:text-white mb-1">
             {loading ? '...' : error ? '—' : repos}
           </div>
-          <div className="text-xs text-white/50 font-medium">Repositories</div>
+          <div className="text-xs text-retro-gray/70 dark:text-white/50 font-medium">Repositories</div>
         </motion.div>
 
         <motion.div
@@ -89,12 +91,12 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="glass-card p-4 text-center hover:border-white/20 transition-all duration-300"
+          className="glass-card p-4 text-center hover:border-retro-orange/30 dark:hover:border-white/20 transition-all duration-300"
         >
-          <div className="text-2xl font-extrabold text-white mb-1">
+          <div className="text-2xl font-extrabold text-retro-black dark:text-white mb-1">
             {loading ? '...' : error ? '—' : followers}
           </div>
-          <div className="text-xs text-white/50 font-medium">Followers</div>
+          <div className="text-xs text-retro-gray/70 dark:text-white/50 font-medium">Followers</div>
         </motion.div>
 
         <motion.div
@@ -173,14 +175,14 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.1 }}
-      className="glass-card p-6 md:p-8 hover:border-white/15 transition-all duration-300"
+      className="glass-card p-6 md:p-8 hover:border-retro-orange/30 dark:hover:border-white/15 transition-all duration-300"
     >
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-lg bg-white/5 border border-white/5">
-            <LeetCodeIcon className="w-6 h-6 text-white/70" />
+          <div className="p-2.5 rounded-lg bg-retro-black/5 dark:bg-white/5 border border-retro-black/5 dark:border-white/5">
+            <LeetCodeIcon className="w-6 h-6 text-retro-gray dark:text-white/70" />
           </div>
-          <h3 className="text-2xl font-extrabold text-white">
+          <h3 className="text-2xl font-extrabold text-retro-black dark:text-white">
             LeetCode Statistics
           </h3>
         </div>
@@ -202,12 +204,12 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="glass-card p-4 text-center hover:border-white/20 transition-all duration-300"
+          className="glass-card p-4 text-center hover:border-retro-orange/30 dark:hover:border-white/20 transition-all duration-300"
         >
-          <div className="text-2xl font-extrabold text-white mb-1">
+          <div className="text-2xl font-extrabold text-retro-black dark:text-white mb-1">
             {loading ? '...' : error ? '—' : totalSolved?.toLocaleString() ?? '—'}
           </div>
-          <div className="text-xs text-white/50 font-medium">Problems Solved</div>
+          <div className="text-xs text-retro-gray/70 dark:text-white/50 font-medium">Problems Solved</div>
         </motion.div>
 
         <motion.div
@@ -215,12 +217,12 @@ const LeetCodeCard = ({ profile }: { profile: typeof profiles[0] }) => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="glass-card p-4 text-center hover:border-white/20 transition-all duration-300"
+          className="glass-card p-4 text-center hover:border-retro-orange/30 dark:hover:border-white/20 transition-all duration-300"
         >
-          <div className="text-2xl font-extrabold text-white mb-1">
+          <div className="text-2xl font-extrabold text-retro-black dark:text-white mb-1">
             {loading ? '...' : error ? '—' : ranking?.toLocaleString() ?? '—'}
           </div>
-          <div className="text-xs text-white/50 font-medium">Ranking</div>
+          <div className="text-xs text-retro-gray/70 dark:text-white/50 font-medium">Ranking</div>
         </motion.div>
       </div>
 
@@ -280,37 +282,37 @@ const ChessCard = ({ profile }: { profile: typeof profiles[0] }) => {
     >
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-white/5 border border-white/5">
-            <span className="text-white/70">♞</span>
+          <div className="p-2 rounded-lg bg-retro-black/5 dark:bg-white/5 border border-retro-black/5 dark:border-white/5">
+            <span className="text-retro-gray dark:text-white/70">♞</span>
           </div>
-          <span className="font-bold text-white">{title}</span>
+          <span className="font-bold text-retro-black dark:text-white">{title}</span>
         </div>
         <span className="text-sm text-retro-orange flex items-center gap-1 group-hover:underline font-bold">
           Visit <ExternalLinkIcon className="w-3.5 h-3.5" />
         </span>
       </div>
 
-      <p className="text-sm text-white/50 mb-1">@{profile.username}</p>
-      <p className="text-sm text-white/60 font-medium">{loading ? 'Loading chess stats...' : error ? profile.description : `Best blitz ${data?.chess_blitz?.best?.rating ?? '—'}`}</p>
+      <p className="text-sm text-retro-gray/50 dark:text-white/50 mb-1">@{profile.username}</p>
+      <p className="text-sm text-retro-gray dark:text-white/60 font-medium">{loading ? 'Loading chess stats...' : error ? profile.description : `Best blitz ${data?.chess_blitz?.best?.rating ?? '—'}`}</p>
 
-      <div className="flex gap-6 mt-4 pt-4 border-t border-white/5">
+      <div className="flex gap-6 mt-4 pt-4 border-t border-retro-black/5 dark:border-white/5">
         <div>
-          <p className="font-extrabold text-white">{loading ? '...' : error ? '—' : blitz ?? '—'}</p>
-          <p className="text-xs text-white/40 font-medium">Blitz</p>
+          <p className="font-extrabold text-retro-black dark:text-white">{loading ? '...' : error ? '—' : blitz ?? '—'}</p>
+          <p className="text-xs text-retro-gray/50 dark:text-white/40 font-medium">Blitz</p>
         </div>
 
         <div className="grid grid-cols-3 gap-4 flex-1">
           <div>
-            <p className="font-extrabold text-white">{loading ? '...' : error ? '—' : rapid ?? '—'}</p>
-            <p className="text-xs text-white/45 font-medium">Rapid</p>
+            <p className="font-extrabold text-retro-black dark:text-white">{loading ? '...' : error ? '—' : rapid ?? '—'}</p>
+            <p className="text-xs text-retro-gray/55 dark:text-white/45 font-medium">Rapid</p>
           </div>
           <div>
-            <p className="font-extrabold text-white">{loading ? '...' : error ? '—' : bullet ?? '—'}</p>
-            <p className="text-xs text-white/45 font-medium">Bullet</p>
+            <p className="font-extrabold text-retro-black dark:text-white">{loading ? '...' : error ? '—' : bullet ?? '—'}</p>
+            <p className="text-xs text-retro-gray/55 dark:text-white/45 font-medium">Bullet</p>
           </div>
           <div>
-            <p className="font-extrabold text-white">{loading ? '...' : error ? '—' : tactics ?? '—'}</p>
-            <p className="text-xs text-white/40 font-medium">Tactics</p>
+            <p className="font-extrabold text-retro-black dark:text-white">{loading ? '...' : error ? '—' : tactics ?? '—'}</p>
+            <p className="text-xs text-retro-gray/50 dark:text-white/40 font-medium">Tactics</p>
           </div>
         </div>
       </div>
@@ -340,7 +342,7 @@ export const Profiles = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="inline-block px-4 py-1 rounded-full bg-white/5 text-[10px] font-bold text-retro-orange border border-white/10 mb-4 uppercase tracking-[0.2em]"
+          className="inline-block px-4 py-1 rounded-full bg-retro-black/5 dark:bg-white/5 text-[10px] font-bold text-retro-orange border border-retro-black/10 dark:border-white/10 mb-4 uppercase tracking-[0.2em]"
         >
           Track Record
         </motion.div>
@@ -349,7 +351,7 @@ export const Profiles = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-3xl md:text-5xl font-extrabold text-white mb-4 leading-tight tracking-tight"
+          className="text-3xl md:text-5xl font-extrabold text-retro-black dark:text-white mb-4 leading-tight tracking-tight"
         >
           Technical <span className="text-retro-orange text-glow">Achievements</span>
         </motion.h2>
@@ -358,7 +360,7 @@ export const Profiles = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-lg text-white/50 font-medium"
+          className="text-lg text-retro-gray dark:text-white/50 font-medium"
         >
           Validation of skills through competitive programming, open source contributions, and strategy.
         </motion.p>
@@ -396,22 +398,22 @@ export const Profiles = () => {
         >
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="max-w-xl select-none">
-              <h3 className="font-extrabold text-white text-2xl flex items-center gap-2 mb-2">
+              <h3 className="font-extrabold text-retro-black dark:text-white text-2xl flex items-center gap-2 mb-2">
                 <span className="text-retro-orange text-3xl">★</span> Open-source Contributions
               </h3>
-              <p className="text-sm text-white/60 font-medium">
+              <p className="text-sm text-retro-gray dark:text-white/60 font-medium">
                 Active member of the developer community, contributing to tools that help thousands of developers worldwide.
               </p>
             </div>
 
             <ul className="grid sm:grid-cols-2 gap-4 flex-1">
-              <li className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-retro-orange/30 transition-all duration-300">
+              <li className="p-4 rounded-xl bg-retro-black/5 dark:bg-white/5 border border-retro-black/5 dark:border-white/5 hover:border-retro-orange/30 transition-all duration-300">
                 <a href="https://learngitbranching.js.org/" target="_blank" rel="noreferrer" className="text-retro-orange font-bold hover:underline block mb-1">Learn Git Branching</a>
-                <p className="text-xs text-white/50 font-medium">UX/UI enhancements and core bug fixes for the interactive Git playground.</p>
+                <p className="text-xs text-retro-gray/60 dark:text-white/50 font-medium">UX/UI enhancements and core bug fixes for the interactive Git playground.</p>
               </li>
-              <li className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-retro-orange/30 transition-all duration-300">
+              <li className="p-4 rounded-xl bg-retro-black/5 dark:bg-white/5 border border-retro-black/5 dark:border-white/5 hover:border-retro-orange/30 transition-all duration-300">
                 <a href="https://chesskit.org/" target="_blank" rel="noreferrer" className="text-retro-orange font-bold hover:underline block mb-1">ChessKit</a>
-                <p className="text-xs text-white/50 font-medium">Implemented advanced ELO estimation logic for player analytics.</p>
+                <p className="text-xs text-retro-gray/60 dark:text-white/50 font-medium">Implemented advanced ELO estimation logic for player analytics.</p>
               </li>
             </ul>
           </div>

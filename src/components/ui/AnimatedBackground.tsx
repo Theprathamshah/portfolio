@@ -1,6 +1,6 @@
 export const AnimatedBackground = () => {
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 bg-[#090909]">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 bg-retro-cream dark:bg-retro-black transition-colors duration-300">
       {/* Subtle fading engineering grid */}
       <div className="absolute inset-0 bg-grid" />
       
@@ -12,6 +12,6 @@ export const AnimatedBackground = () => {
 
       {/* Bottom-Right Ambient Glow (Purple) */}
       <div className="absolute -bottom-[20%] -right-[20%] w-[650px] h-[650px] rounded-full bg-retro-purple/[0.03] blur-[180px]" />
-    </div>
+     </div>
   );
 };
