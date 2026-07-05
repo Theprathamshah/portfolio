@@ -35,6 +35,8 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
             <img
               src={project.image}
               alt={project.title}
+              width={800}
+              height={480}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
@@ -54,16 +56,16 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
       <div className="p-6 flex flex-col flex-grow select-none">
         <div className="flex justify-between items-start mb-4">
-          <h3 className="text-xl font-extrabold text-retro-black dark:text-white group-hover:text-retro-orange transition-colors">
+          <h2 className="text-xl font-extrabold text-retro-black dark:text-white group-hover:text-retro-orange transition-colors">
             {project.title}
-          </h3>
+          </h2>
           <div className="flex gap-2">
             {project.github && (
               <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-retro-black/5 dark:bg-white/5 text-retro-gray/60 dark:text-white/50 hover:text-retro-orange hover:bg-retro-black/10 dark:hover:bg-white/10 transition-all border border-retro-black/10 dark:border-white/10 hover:border-retro-orange/30"
+                className="p-2.5 rounded-full bg-retro-black/5 dark:bg-white/5 text-retro-gray/80 dark:text-white/70 hover:text-retro-orange hover:bg-retro-black/10 dark:hover:bg-white/10 transition-all border border-retro-black/10 dark:border-white/10 hover:border-retro-orange/30"
                 aria-label="View Source"
               >
                 <GitHubIcon className="w-4.5 h-4.5" />
@@ -74,7 +76,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-retro-black/5 dark:bg-white/5 text-retro-gray/60 dark:text-white/50 hover:text-retro-orange hover:bg-retro-black/10 dark:hover:bg-white/10 transition-all border border-retro-black/10 dark:border-white/10 hover:border-retro-orange/30"
+                className="p-2.5 rounded-full bg-retro-black/5 dark:bg-white/5 text-retro-gray/80 dark:text-white/70 hover:text-retro-orange hover:bg-retro-black/10 dark:hover:bg-white/10 transition-all border border-retro-black/10 dark:border-white/10 hover:border-retro-orange/30"
                 aria-label="Live Demo"
               >
                 <ExternalLinkIcon className="w-4.5 h-4.5" />
@@ -83,7 +85,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
           </div>
         </div>
         
-        <p className="text-sm text-retro-gray dark:text-white/60 mb-6 leading-relaxed font-medium">
+        <p className="text-sm text-retro-gray dark:text-white/75 mb-6 leading-relaxed font-medium">
           {project.description}
         </p>
 

@@ -11,7 +11,7 @@ export const featuredProjects: Project[] = [
     longDescription: 'Developed a serverless, event-driven backend to orchestrate complex ETL workflows for a major UK retailer. Leveraged AWS Kinesis and EventBridge for real-time data streaming and synchronization.',
     tech: ['Java', 'Spring Boot', 'AWS Lambda', 'Step Functions', 'Kinesis'],
     impact: 'Improved data consistency and processed 50k+ updates daily.',
-    image: '/projects/etl.png',
+    image: '/projects/etl.webp',
     featured: true,
   },
   {
@@ -22,7 +22,7 @@ export const featuredProjects: Project[] = [
     impact: 'Built a professional-grade chess suite with premium analysis features.',
     link: 'https://freechess-kappa.vercel.app/',
     github: 'https://github.com/Theprathamshah/Freechess',
-    image: '/projects/freechess.png',
+    image: '/projects/freechess.webp',
     featured: true,
   },
   {
@@ -31,7 +31,7 @@ export const featuredProjects: Project[] = [
     longDescription: 'Engineered a resilient migration strategy to move 25 million stock records from legacy systems to a microservices architecture, ensuring data integrity and 99.9% reliability.',
     tech: ['Java', 'AWS Step Functions', 'S3', 'Microservices', 'SQS'],
     impact: 'Zero-downtime migration of 25M records.',
-    image: '/projects/migration.png',
+    image: '/projects/migration.webp',
   },
   {
     title: 'BigInt C++ Library',
@@ -40,7 +40,7 @@ export const featuredProjects: Project[] = [
     tech: ['C++', 'Algorithms', 'Data Structures', 'String Manipulation'],
     impact: 'Enabled precise math operations with overflow-safe execution.',
     github: 'https://github.com/Theprathamshah/BigInt',
-    image: '/projects/bigint.png',
+    image: '/projects/bigint.webp',
   }
 ];
 

@@ -15,7 +15,7 @@ export const Projects = () => {
           Featured Work
         </motion.div>
         
-        <motion.h2
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -23,7 +23,7 @@ export const Projects = () => {
           className="text-3xl md:text-5xl font-extrabold text-retro-black dark:text-white mb-6 leading-tight tracking-tight"
         >
           Featured <span className="text-retro-orange text-glow">Engineering</span> Projects
-        </motion.h2>
+        </motion.h1>
         
         <motion.p
           initial={{ opacity: 0, y: 20 }}

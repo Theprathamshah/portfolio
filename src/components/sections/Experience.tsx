@@ -11,7 +11,7 @@ export const Experience = () => {
       transition={{ duration: 0.8 }}
       className="w-full"
     >
-      <motion.h2
+      <motion.h1
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -19,7 +19,7 @@ export const Experience = () => {
         className="text-3xl md:text-5xl font-extrabold text-retro-black dark:text-white mb-4 leading-tight tracking-tight select-none"
       >
         Professional Journey
-      </motion.h2>
+      </motion.h1>
       
       <motion.p
         initial={{ opacity: 0, y: 20 }}
