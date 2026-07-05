@@ -1,20 +1,23 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 interface ScrollIndicatorProps {
-  targetId: string;
+  to: string;
   label?: string;
   className?: string;
 }
 
-export const ScrollIndicator = ({ targetId, label = "Continue Exploring", className = "" }: ScrollIndicatorProps) => {
+const MotionLink = motion(Link);
+
+export const ScrollIndicator = ({ to, label = "Continue Exploring", className = "" }: ScrollIndicatorProps) => {
   return (
     <div className={`mt-12 flex justify-center ${className}`}>
-      <motion.a
-        href={`#${targetId}`}
+      <MotionLink
+        to={to}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         whileHover={{ y: 5 }}
-        className="flex flex-col items-center gap-3 text-retro-gray dark:text-white/40 hover:text-retro-orange transition-colors group"
+        className="flex flex-col items-center gap-3 text-retro-gray dark:text-white/40 hover:text-retro-orange transition-colors group cursor-pointer"
       >
         <span className="text-[10px] uppercase font-bold tracking-[0.3em] group-hover:text-retro-orange transition-colors">
           {label}
@@ -33,7 +36,7 @@ export const ScrollIndicator = ({ targetId, label = "Continue Exploring", classN
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </motion.div>
-      </motion.a>
+      </MotionLink>
     </div>
   );
 };

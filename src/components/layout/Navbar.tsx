@@ -1,50 +1,35 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@/context/ThemeContext';
 import { SunIcon, MoonIcon, MenuIcon, CloseIcon } from '../ui/Icons';
 
 const navItems = [
-  { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Tech Stack', href: '#tech' },
-  { label: 'Achievements', href: '#achievements' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Projects', to: '/projects' },
+  { label: 'Experience', to: '/experience' },
+  { label: 'Tech Stack', to: '/tech' },
+  { label: 'Achievements', to: '/achievements' },
+  { label: 'Contact', to: '/contact' },
 ];
+
+const MotionLink = motion(Link);
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('about');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   useEffect(() => {
-    const mainContent = document.getElementById('main-content');
     const handleScroll = () => {
-      if (!mainContent) return;
-      setIsScrolled(mainContent.scrollTop > 50);
-
-      const sections: string[] = ['about', 'projects', 'experience', 'tech', 'achievements', 'contact'];
-      const scrollPosition = mainContent.scrollTop + 200;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sectionId = sections[i];
-        if (!sectionId) continue;
-        const section = document.getElementById(sectionId);
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(sectionId);
-          break;
-        }
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
-    if (mainContent) {
-      mainContent.addEventListener('scroll', handleScroll);
-      handleScroll(); // Initial check
-    }
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
     return () => {
-      if (mainContent) {
-        mainContent.removeEventListener('scroll', handleScroll);
-      }
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -64,23 +49,23 @@ export const Navbar = () => {
       role="navigation"
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between">
-        <motion.a
-          href="#about"
+        <MotionLink
+          to="/"
           whileHover={{ scale: 1.02 }}
           className="font-semibold text-lg text-retro-black dark:text-white"
         >
           Pratham Shah
-        </motion.a>
+        </MotionLink>
 
         <div className="flex items-center gap-6">
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center gap-2">
             {navItems.map((item) => {
-              const isActive = activeSection === item.href.replace('#', '');
+              const isActive = currentPath === item.to;
               return (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.to}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${isActive
                         ? 'text-retro-orange bg-retro-orange/10 dark:bg-retro-orange/20 dark:text-retro-orange'
@@ -95,7 +80,7 @@ export const Navbar = () => {
                         transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                       />
                     )}
-                  </a>
+                  </Link>
                 </li>
               );
             })}
@@ -142,11 +127,11 @@ export const Navbar = () => {
             >
               <ul className="flex flex-col py-2">
                 {navItems.map((item) => {
-                  const isActive = activeSection === item.href.replace('#', '');
+                  const isActive = currentPath === item.to;
                   return (
                     <li key={item.label}>
-                      <a
-                        href={item.href}
+                      <Link
+                        to={item.to}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={`block px-4 py-3 text-sm font-medium transition-all duration-200 ${isActive
                             ? 'text-retro-orange bg-retro-orange/10 dark:bg-retro-orange/20'
@@ -154,7 +139,7 @@ export const Navbar = () => {
                           }`}
                       >
                         {item.label}
-                      </a>
+                      </Link>
                     </li>
                   );
                 })}
