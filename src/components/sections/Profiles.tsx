@@ -60,9 +60,14 @@ const GitHubCard = ({ profile }: { profile: typeof profiles[0] }) => {
             <img
               src={`https://github-contributions-api.jogruber.de/v4/${profile.username}?no-total=true&no-legend=true&format=svg&theme=${theme === 'dark' ? 'github-dark' : 'github-light'}`}
               alt="GitHub Contribution Graph"
+              width={820}
+              height={120}
               className="w-full h-auto"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = `https://ghchart.rshah.org/${profile.username}?colors=161b22,0e4429,006d32,26a641,39d353`;
+                const target = e.target as HTMLImageElement;
+                target.src = `https://ghchart.rshah.org/${profile.username}?colors=161b22,0e4429,006d32,26a641,39d353`;
+                target.width = 820;
+                target.height = 120;
               }}
             />
           )}
