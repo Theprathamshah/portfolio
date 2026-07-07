@@ -82,7 +82,7 @@ export const Contact = () => {
         >
           Contact Me
         </motion.div>
-        <motion.h2
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -90,7 +90,7 @@ export const Contact = () => {
           className="text-3xl md:text-5xl font-extrabold text-retro-black dark:text-white mb-6 leading-tight tracking-tight"
         >
           Get in Touch
-        </motion.h2>
+        </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -118,10 +118,10 @@ export const Contact = () => {
               </svg>
             </div>
             <div>
-              <h3 className="text-xl font-extrabold text-retro-black dark:text-white">
+              <h2 className="text-xl font-extrabold text-retro-black dark:text-white">
                 Send Me a Message
-              </h3>
-              <p className="text-sm text-retro-gray/60 dark:text-white/50 font-medium">
+              </h2>
+              <p className="text-sm text-retro-gray/80 dark:text-white/70 font-medium">
                 Fill out the form and I'll get back to you within 24 hours
               </p>
             </div>
@@ -239,12 +239,12 @@ export const Contact = () => {
           className="lg:col-span-2 space-y-6"
         >
           <div className="glass-card p-6 md:p-8 h-full flex flex-col hover:border-retro-orange/30 dark:hover:border-white/15 transition-all duration-300">
-            <h3 className="flex items-center gap-2 text-xl font-extrabold text-retro-black dark:text-white mb-8 select-none">
+            <h2 className="flex items-center gap-2 text-xl font-extrabold text-retro-black dark:text-white mb-8 select-none">
               <svg className="w-5 h-5 text-retro-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               Contact Information
-            </h3>
+            </h2>
 
             <div className="space-y-6 flex-grow">
               <div className="flex items-start gap-4 p-4 rounded-xl bg-retro-black/5 dark:bg-white/5 border border-retro-black/5 dark:border-white/5 hover:border-retro-orange/30 transition-colors">
@@ -254,7 +254,7 @@ export const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <div className="text-xs text-retro-gray/50 dark:text-white/40 mb-1 font-bold uppercase tracking-wider">Name</div>
+                  <div className="text-xs text-retro-gray/80 dark:text-white/70 mb-1 font-bold uppercase tracking-wider">Name</div>
                   <div className="font-extrabold text-retro-black dark:text-white">Pratham Shah</div>
                 </div>
               </div>
@@ -266,7 +266,7 @@ export const Contact = () => {
                   </svg>
                 </div>
                 <div className="break-all">
-                  <div className="text-xs text-retro-gray/50 dark:text-white/40 mb-1 font-bold uppercase tracking-wider">Email</div>
+                  <div className="text-xs text-retro-gray/80 dark:text-white/70 mb-1 font-bold uppercase tracking-wider">Email</div>
                   <a href="mailto:itspratham2911@gmail.com" className="font-bold text-retro-orange hover:underline">
                     itspratham2911@gmail.com
                   </a>
@@ -281,14 +281,14 @@ export const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <div className="text-xs text-retro-gray/50 dark:text-white/40 mb-1 font-bold uppercase tracking-wider">Location</div>
+                  <div className="text-xs text-retro-gray/80 dark:text-white/70 mb-1 font-bold uppercase tracking-wider">Location</div>
                   <div className="font-extrabold text-retro-black dark:text-white">India</div>
                 </div>
               </div>
             </div>
 
             <div className="mt-8 pt-6 border-t border-retro-black/5 dark:border-white/5 select-none">
-              <div className="text-xs text-retro-gray/50 dark:text-white/40 mb-4 font-bold uppercase tracking-wider">Follow Me</div>
+              <div className="text-xs text-retro-gray/80 dark:text-white/70 mb-4 font-bold uppercase tracking-wider">Follow Me</div>
               <div className="flex flex-wrap gap-3">
                 {socialLinks.map((link) => {
                   const Icon = iconMap[link.icon as keyof typeof iconMap];

@@ -317,7 +317,7 @@ export const TechStack = () => {
             <span className="w-1.5 h-1.5 rounded-full bg-retro-orange" />
             What I Work With
           </motion.div>
-          <motion.h2
+          <motion.h1
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -325,7 +325,7 @@ export const TechStack = () => {
             className="text-3xl md:text-5xl font-extrabold text-retro-black dark:text-white mb-4 leading-tight tracking-tight"
           >
             Skills & Technical <span className="text-retro-orange text-glow">Arsenal</span>
-          </motion.h2>
+          </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}

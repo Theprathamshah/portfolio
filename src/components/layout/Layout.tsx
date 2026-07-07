@@ -1,9 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Outlet, useLocation } from 'react-router-dom';
 import { AnimatedBackground } from '../ui/AnimatedBackground';
 import { Navbar } from './Navbar';
 import { Footer } from '../sections/Footer';
+
+const PageLoader = () => (
+  <div className="flex flex-col items-center justify-center min-h-[40vh] w-full text-retro-gray dark:text-white/60 select-none">
+    <div className="w-8 h-8 border-2 border-retro-black/20 border-t-retro-orange dark:border-white/20 dark:border-t-retro-orange rounded-full animate-spin"></div>
+  </div>
+);
 
 export const Layout = () => {
   const location = useLocation();
@@ -40,7 +46,9 @@ export const Layout = () => {
             transition={{ duration: 0.3 }}
             className="w-full flex-grow flex flex-col"
           >
-            <Outlet />
+            <Suspense fallback={<PageLoader />}>
+              <Outlet />
+            </Suspense>
           </motion.div>
         </AnimatePresence>
       </main>

@@ -1,12 +1,14 @@
+import { lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { Layout } from './components/layout/Layout';
-import { Hero } from './components/sections/Hero';
-import { Projects } from './components/sections/Projects';
-import { Experience } from './components/sections/Experience';
-import { TechStack } from './components/sections/TechStack';
-import { Profiles } from './components/sections/Profiles';
-import { Contact } from './components/sections/Contact';
+
+const Hero = lazy(() => import('./components/sections/Hero').then(module => ({ default: module.Hero })));
+const Projects = lazy(() => import('./components/sections/Projects').then(module => ({ default: module.Projects })));
+const Experience = lazy(() => import('./components/sections/Experience').then(module => ({ default: module.Experience })));
+const TechStack = lazy(() => import('./components/sections/TechStack').then(module => ({ default: module.TechStack })));
+const Profiles = lazy(() => import('./components/sections/Profiles').then(module => ({ default: module.Profiles })));
+const Contact = lazy(() => import('./components/sections/Contact').then(module => ({ default: module.Contact })));
 
 const AboutPage = () => (
   <div className="flex-grow flex flex-col items-center justify-center py-6 w-full max-w-7xl mx-auto">
